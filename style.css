@@ -1,90 +1,136 @@
-/* style.css */
-
-/* 기본 설정 */
+/* 스타일 초기화 및 기본 폰트 설정 */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Pretendard', 'Arial', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f7f9fc;
     color: #333;
 }
 
-header {
-    background-color: #0056b3; /* 회사 메인 컬러 */
+/* 헤더 */
+.main-header {
+    background: linear-gradient(to right, #004499, #0056b3);
     color: white;
-    padding: 1rem 0;
+    padding: 2rem 1rem;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-nav {
-    background-color: #004499;
-    padding: 0.5rem 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
+.header-container h1 {
     margin: 0;
+    font-size: 2rem;
 }
 
-nav ul li {
-    display: inline-block;
-    margin: 0 15px;
+.subtitle {
+    margin-top: 0.5rem;
+    font-weight: 300;
+    font-size: 1.1rem;
 }
 
-nav ul li a {
-    color: white;
+/* 탭 내비게이션 (링크형 스타일) */
+.tab-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    background-color: transparent;
+    padding: 1rem 0;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab-nav li {
+    list-style: none;
+}
+
+.tab-nav a {
     text-decoration: none;
-    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
+.tab-nav a:hover {
+    color: #0056b3;
+    border-bottom: 2px solid #ccc;
+}
+
+.tab-nav a.active {
+    color: #0056b3;
+    font-weight: bold;
+    border-bottom: 3px solid #0056b3;
+}
+
+
+/* 메인 콘텐츠 */
 main {
     padding: 20px;
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 30px auto;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+    min-height: 500px;
 }
 
-.content-section {
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+/* 섹션 */
+.content-display-section {
+    display: none;
 }
 
-.content-section:last-of-type {
-    border-bottom: none;
+.content-display-section.active {
+    display: block;
 }
 
-/* 2. 예시 섹션 - 좌우 분할 (데스크톱) */
+main h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+    color: #003f7f;
+}
+
+/* 메뉴얼 항목 */
+.manual-item {
+    background-color: #fefefe;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+/* 예시 */
 .example-container {
-    display: flex; /* Flexbox를 사용하여 자식 요소를 가로로 배치 */
-    gap: 20px; /* 자식 요소 사이 간격 */
-    flex-wrap: wrap; /* 모바일에서 상하로 줄바꿈 되도록 설정 */
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .example-list, .example-detail {
-    flex: 1; /* 가용한 공간을 균등하게 분배 */
+    flex: 1;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #f9f9f9;
+    min-width: 280px;
 }
 
 .example-list ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .example-list li {
     padding: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     background-color: #eee;
-    border-radius: 3px;
-    cursor: pointer; /* 클릭 가능한 요소임을 표시 */
+    border-radius: 5px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
@@ -92,17 +138,204 @@ main {
     background-color: #ddd;
 }
 
-/* 모바일 화면 (div 상하) */
+.example-list li.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+/* 예시 상세 */
+.example-detail {
+    background-color: #ffffff;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+/* 업무 흐름 다이어그램 */
+.workflow-diagram-linear {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    padding: 20px;
+    background-color: #fcfcfc;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.step {
+    background-color: #e9f7ff;
+    border: 1px solid #a8d7f7;
+    border-radius: 5px;
+    padding: 12px 20px;
+    text-align: left;
+    font-size: 1.05em;
+    font-weight: bold;
+    color: #0056b3;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    position: relative;
+    width: fit-content;
+    min-width: 300px;
+}
+
+.step .step-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    text-align: center;
+    color: #0056b3;
+}
+
+.step::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #a8d7f7;
+    z-index: 1;
+}
+
+.end::after {
+    display: none;
+}
+
+/* 결정 단계 (타원형) */
+.decision {
+    background-color: #fff3cd;
+    border-color: #ffc107;
+    color: #856404;
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-size: 1.05em;
+    min-width: 400px;
+    text-align: left;
+}
+
+.decision p.step-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+    color: #856404;
+}
+
+.decision .decision-info {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 5px;
+    display: block;
+    text-align: left;
+    padding-top: 0.4rem;
+}
+
+/* 프로세스 단계 */
+.process-flow {
+    background-color: #e0f7fa;
+    border-radius: 50px;
+    border-color: #4dd0e1;
+    color: #00838f;
+    min-width: 400px;
+    text-align: left;
+}
+
+.process-flow .step-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #00838f;
+}
+
+.process-flow .sub-text-left {
+    font-size: 0.8em;
+    color: #555;
+    margin-top: 0.5rem;
+    line-height: 1.3;
+}
+
+.example-dual-pane {
+    display: flex;
+    gap: 20px;
+    margin-top: 1.5em;
+}
+
+.example-pane {
+    flex: 1;
+    background: #f9f9f9;
+    padding: 1em;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    min-height: 250px;
+}
+
+.example-content-pane {
+    display: none;
+}
+
+.example-content-pane.active {
+    display: block;
+}
+
+.sub-tab-nav ul {
+    display: flex;
+    gap: 10px;
+    margin-top: 1em;
+    padding: 0;
+    list-style: none;
+}
+
+.sub-tab-nav .sub-tab {
+    text-decoration: none;
+    padding: 6px 12px;
+    background: #ddd;
+    border-radius: 6px;
+    color: #000;
+    font-weight: 500;
+}
+
+.sub-tab-nav .sub-tab.active {
+    background: #333;
+    color: #fff;
+}
+
+/* 반응형 */
 @media (max-width: 768px) {
     .example-container {
-        flex-direction: column; /* 세로 방향으로 배치 */
+        flex-direction: column;
+    }
+
+    .workflow-diagram-linear {
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .step, .decision, .process-flow {
+        width: 90%;
+        min-width: unset;
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+
+    .step .step-title,
+    .decision p.step-title,
+    .process-flow .step-title {
+        font-size: 1.1em;
+    }
+
+    .decision .decision-info,
+    .process-flow .sub-text-left {
+        font-size: 0.75em;
     }
 }
 
+/* 푸터 */
 footer {
     text-align: center;
     padding: 20px;
     background-color: #333;
     color: white;
     margin-top: 30px;
+    font-size: 0.9em;
 }
