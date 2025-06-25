@@ -134,3 +134,109 @@ document.querySelectorAll('.sub-tab').forEach(tab => {
         document.querySelector(`#certificate-view-${target}`).classList.add('active');
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const input = document.getElementById("manualSearchInput");
+    const manualItems = document.querySelectorAll("#manual-section .manual-item");
+
+    input.addEventListener("input", function () {
+        const query = this.value.trim().toLowerCase();
+
+        manualItems.forEach(item => {
+            const originalHTML = item.getAttribute("data-original-html");
+
+            // 최초 한 번만 원본 백업
+            if (!originalHTML) {
+                item.setAttribute("data-original-html", item.innerHTML);
+            }
+
+            // 원본으로 복원
+            item.innerHTML = item.getAttribute("data-original-html");
+
+            if (query) {
+                highlightText(item, query);
+            }
+        });
+    });
+
+    function highlightText(element, keyword) {
+        const regex = new RegExp(`(${keyword})`, "gi");
+
+        // 텍스트 노드 순회
+        const walk = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+        const textNodes = [];
+
+        while (walk.nextNode()) {
+            textNodes.push(walk.currentNode);
+        }
+
+        textNodes.forEach(node => {
+            const parent = node.parentNode;
+            if (parent && parent.className !== "highlight") {
+                const replaced = node.nodeValue.replace(regex, '<span class="highlight">$1</span>');
+                const wrapper = document.createElement("span");
+                wrapper.innerHTML = replaced;
+                parent.replaceChild(wrapper, node);
+            }
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const colorPalette = [
+        "#fce4ec", "#e3f2fd", "#e8f5e9", "#fff3e0", "#ede7f6", "#f9fbe7",
+        "#e0f2f1", "#fbe9e7", "#f3e5f5", "#e0f7fa"
+    ];
+
+    const periodColorMap = {};
+    let colorIndex = 0;
+
+    // 오른쪽 테이블의 근무기간을 기준으로 색을 매핑
+    const certTable = document.querySelector("#consolidated-career-table tbody");
+    const careerTable = document.querySelector("#raw-career-table tbody");
+
+    if (!certTable || !careerTable) return;
+
+    const certRows = Array.from(certTable.querySelectorAll("tr"));
+
+    certRows.forEach(row => {
+        const periodCell = row.children[1];
+        if (!periodCell) return;
+
+        const periodText = periodCell.textContent.trim();
+        if (!periodText.includes("~")) return;
+
+        if (!periodColorMap[periodText]) {
+            periodColorMap[periodText] = colorPalette[colorIndex % colorPalette.length];
+            colorIndex++;
+        }
+
+        const color = periodColorMap[periodText];
+        row.style.backgroundColor = color;
+
+        // 좌측 raw 테이블의 기간 텍스트와도 비교 (범위 매핑은 수동 조정 필요)
+        highlightMatchingRawRow(periodText, color);
+    });
+
+    function highlightMatchingRawRow(targetPeriod, color) {
+        const rawRows = Array.from(careerTable.querySelectorAll("tr"));
+        const [startRaw, endRaw] = targetPeriod.replace(/[.]/g, "").split("~").map(s => s.trim());
+
+        rawRows.forEach(row => {
+            const dateCell = row.children[0];
+            if (!dateCell) return;
+
+            const dateVal = dateCell.textContent.replace(/\//g, "").trim();
+            if (dateVal >= startRaw && dateVal <= endRaw) {
+                row.style.backgroundColor = color;
+            }
+        });
+    }
+});
+
+
+// 페이지 로드 시 '본사' 탭을 기본으로 선택
+document.addEventListener("DOMContentLoaded", function () {
+    const defaultTab = document.querySelector('.sub-tab[data-target="hq"]');
+    if (defaultTab) defaultTab.click();
+});

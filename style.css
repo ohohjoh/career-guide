@@ -330,6 +330,24 @@ main h2 {
     }
 }
 
+.manual-search {
+    margin: 1em 0;
+    text-align: left;
+}
+
+.manual-search input {
+    padding: 8px;
+    width: 300px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
 /* 푸터 */
 footer {
     text-align: center;
