@@ -138,49 +138,88 @@ document.querySelectorAll('.sub-tab').forEach(tab => {
 document.addEventListener("DOMContentLoaded", function () {
     const input = document.getElementById("manualSearchInput");
     const manualItems = document.querySelectorAll("#manual-section .manual-item");
+    let currentIndex = -1; // 현재 하이라이트 인덱스
 
+    // 검색어 입력 시 실행
     input.addEventListener("input", function () {
         const query = this.value.trim().toLowerCase();
 
         manualItems.forEach(item => {
-            const originalHTML = item.getAttribute("data-original-html");
-
-            // 최초 한 번만 원본 백업
-            if (!originalHTML) {
+            // 1) 최초로 원본 HTML 백업
+            if (!item.hasAttribute("data-original-html")) {
                 item.setAttribute("data-original-html", item.innerHTML);
             }
-
-            // 원본으로 복원
+            // 2) 원본으로 복원
             item.innerHTML = item.getAttribute("data-original-html");
 
+            // 3) 키워드가 있으면 하이라이트 적용
             if (query) {
                 highlightText(item, query);
             }
         });
+
+        // 인덱스 초기화
+        currentIndex = -1;
+
+        // 첫 번째 하이라이트 위치로 자동 스크롤
+        const firstHighlight = document.querySelector("#manual-section .highlight");
+        if (firstHighlight) {
+            firstHighlight.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+            currentIndex = 0; // 첫 번째를 가리킴
+        }
     });
 
+    // Enter 키로 다음 하이라이트로 이동
+    input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            const highlights = document.querySelectorAll("#manual-section .highlight");
+            if (highlights.length > 0) {
+                // 다음 인덱스로 순환
+                currentIndex = (currentIndex + 1) % highlights.length;
+                highlights[currentIndex].scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }
+        }
+    });
+
+    /**
+     * 요소 내 텍스트 노드에 대해 검색어를 <span class="highlight">로 감싸는 함수
+     * @param {HTMLElement} element - 탐색 대상 요소
+     * @param {string} keyword    - 검색어 (정규식으로 사용)
+     */
     function highlightText(element, keyword) {
         const regex = new RegExp(`(${keyword})`, "gi");
-
-        // 텍스트 노드 순회
-        const walk = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+        const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
         const textNodes = [];
 
-        while (walk.nextNode()) {
-            textNodes.push(walk.currentNode);
+        // 모든 텍스트 노드 수집
+        while (walker.nextNode()) {
+            textNodes.push(walker.currentNode);
         }
 
+        // 각 텍스트 노드에 하이라이트 태그 적용
         textNodes.forEach(node => {
             const parent = node.parentNode;
-            if (parent && parent.className !== "highlight") {
+            // 이미 highlight 안이 아니면 처리
+            if (parent && !parent.classList.contains("highlight")) {
                 const replaced = node.nodeValue.replace(regex, '<span class="highlight">$1</span>');
-                const wrapper = document.createElement("span");
-                wrapper.innerHTML = replaced;
-                parent.replaceChild(wrapper, node);
+                if (replaced !== node.nodeValue) {
+                    const wrapper = document.createElement("span");
+                    wrapper.innerHTML = replaced;
+                    parent.replaceChild(wrapper, node);
+                }
             }
         });
     }
 });
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const colorPalette = [

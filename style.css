@@ -400,9 +400,9 @@ footer {
     background-color: #e0f7ff;
     width: 30%;
     font-weight: bold;
-    text-align: center;
     border: 1px solid #b2e4f3;
-
+    border-radius: 10px; /* 모서리 둥글게 */
+    padding: 0.5rem;     /* 내용과 테두리 사이 여유 추가 */
 }
 
 .workflow-right {
@@ -434,4 +434,72 @@ footer {
 #raw-career-table th:first-child,
 #raw-career-table-local th:first-child {
   width: 10px;
+}
+
+@media (max-width: 768px) {
+  .example-dual-pane {
+    flex-direction: column;
+    gap: 1rem; /* 패널 간 간격 유지 */
+  }
+  .example-pane {
+    width: 100%;
+    margin: 0; /* 좌우 여백 제거 */
+  }
+}
+
+/* 서브 탭 네비게이션 중앙 정렬 및 크기 확대 */
+.sub-tab-nav {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.sub-tab-nav ul {
+  display: inline-flex;       /* 가로로 나열하되, 부모 컨테이너 안에서 중앙 정렬 */
+  gap: 1rem;                  /* 탭 간격 확보 */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sub-tab-nav .sub-tab {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;    /* 세로·가로 패딩 확대 */
+  font-size: 1.1rem;          /* 글자 크기 키우기 */
+  font-weight: 500;
+  background: #ddd;
+  border-radius: 6px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sub-tab-nav .sub-tab:hover {
+  background: #ccc;
+}
+
+.sub-tab-nav .sub-tab.active {
+  background: #0056b3;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .sub-tab-nav ul {
+    display: flex;
+    gap: 0;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .sub-tab-nav li {
+    flex: 1;               /* 모든 li가 같은 비율 차지 */
+  }
+
+  .sub-tab-nav .sub-tab {
+    display: block;        /* inline-block → block */
+    width: 100%;           /* 부모 li 너비에 딱 맞춤 */
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0.75rem 0;    /* 좌우 패딩 제거 후 세로 패딩만 유지 */
+  }
 }
