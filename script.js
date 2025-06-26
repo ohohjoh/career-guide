@@ -138,52 +138,42 @@ document.querySelectorAll('.sub-tab').forEach(tab => {
 document.addEventListener("DOMContentLoaded", function () {
     const input = document.getElementById("manualSearchInput");
     const manualItems = document.querySelectorAll("#manual-section .manual-item");
-    let currentIndex = -1; // 현재 하이라이트 인덱스
+    let currentIndex = -1;   // 현재 하이라이트 인덱스
+    let highlights = [];     // 현재 검색어로 생성된 하이라이트 목록
 
-    // 검색어 입력 시 실행
-    input.addEventListener("input", function () {
-        const query = this.value.trim().toLowerCase();
-
-        manualItems.forEach(item => {
-            // 1) 최초로 원본 HTML 백업
-            if (!item.hasAttribute("data-original-html")) {
-                item.setAttribute("data-original-html", item.innerHTML);
-            }
-            // 2) 원본으로 복원
-            item.innerHTML = item.getAttribute("data-original-html");
-
-            // 3) 키워드가 있으면 하이라이트 적용
-            if (query) {
-                highlightText(item, query);
-            }
-        });
-
-        // 인덱스 초기화
-        currentIndex = -1;
-
-        // 첫 번째 하이라이트 위치로 자동 스크롤
-        const firstHighlight = document.querySelector("#manual-section .highlight");
-        if (firstHighlight) {
-            firstHighlight.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-            currentIndex = 0; // 첫 번째를 가리킴
-        }
-    });
-
-    // Enter 키로 다음 하이라이트로 이동
     input.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
             e.preventDefault();
-            const highlights = document.querySelectorAll("#manual-section .highlight");
-            if (highlights.length > 0) {
-                // 다음 인덱스로 순환
-                currentIndex = (currentIndex + 1) % highlights.length;
-                highlights[currentIndex].scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
+
+            const query = this.value.trim().toLowerCase();
+
+            // 첫 Enter → 검색 & 하이라이트 & 첫 스크롤
+            if (currentIndex < 0) {
+                manualItems.forEach(item => {
+                    // 원본 HTML 백업
+                    if (!item.hasAttribute("data-original-html")) {
+                        item.setAttribute("data-original-html", item.innerHTML);
+                    }
+                    // 원본으로 복원
+                    item.innerHTML = item.getAttribute("data-original-html");
+                    // 키워드가 있으면 하이라이트 적용
+                    if (query) {
+                        highlightText(item, query);
+                    }
                 });
+                // 새로 생성된 하이라이트 목록 수집
+                highlights = Array.from(document.querySelectorAll("#manual-section .highlight"));
+                if (highlights.length > 0) {
+                    currentIndex = 0;
+                    highlights[0].scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            }
+            // 그 다음 Enter → 다음 하이라이트로 순환
+            else {
+                if (highlights.length > 0) {
+                    currentIndex = (currentIndex + 1) % highlights.length;
+                    highlights[currentIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+                }
             }
         }
     });
@@ -206,7 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // 각 텍스트 노드에 하이라이트 태그 적용
         textNodes.forEach(node => {
             const parent = node.parentNode;
-            // 이미 highlight 안이 아니면 처리
             if (parent && !parent.classList.contains("highlight")) {
                 const replaced = node.nodeValue.replace(regex, '<span class="highlight">$1</span>');
                 if (replaced !== node.nodeValue) {
@@ -218,6 +207,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
 
 
 
