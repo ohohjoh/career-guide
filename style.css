@@ -40,8 +40,11 @@ body {
 .tab-nav {
   /* background-color: transparent; /* 헤더와 분리되도록 */
   background-color: #d2dcec; /* 메인 배경색과 동일하게 */
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* 미묘한 그림자 추가 */
+    border-radius: 0.75rem /* top-left, top-right, bottom-right, bottom-left */
+
+
 }
 
 .tab-nav ul {
@@ -437,14 +440,7 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .example-dual-pane {
-    flex-direction: column;
-    gap: 1rem; /* 패널 간 간격 유지 */
-  }
-  .example-pane {
-    width: 100%;
-    margin: 0; /* 좌우 여백 제거 */
-  }
+
 }
 
 /* 서브 탭 네비게이션 중앙 정렬 및 크기 확대 */
@@ -502,4 +498,36 @@ footer {
     text-align: center;
     padding: 0.75rem 0;    /* 좌우 패딩 제거 후 세로 패딩만 유지 */
   }
+
+    .example-dual-pane {
+    flex-direction: column;
+    gap: 1rem; /* 패널 간 간격 유지 */
+
+    }
+    .example-pane {
+        width: 100%;
+        margin: 0; /* 좌우 여백 제거 */
+    }
+      .tab-nav ul {
+        gap: 12px;             /* 탭 간격 줄임 */
+    }
+    .tab-nav a {
+        padding: 4px 8px;      /* 상하 4px, 좌우 8px */
+        font-size: 0.9rem;     /* 폰트 작게 */
+    }
+
+    /* 서브 탭 (본사/지역) */
+    .sub-tab-nav li {
+        flex: 1;               /* 균등 너비 유지 */
+    }
+    .sub-tab-nav .sub-tab {
+        padding: 4px 6px;      /* 상하 4px, 좌우 6px */
+        font-size: 0.85rem;    /* 폰트 작게 */
+    }
+
+    /* (원한다면) 헤더 높이도 줄이기 */
+    .main-header {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
 }
