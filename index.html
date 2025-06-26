@@ -8,76 +8,126 @@
     <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="main-header">
-        <div class="header-container">
-            <h1>경력증명서 가이드라인</h1>
-            <p class="subtitle">경력확인서 발급 절차 및 예시를 한눈에 확인하세요</p>
-        </div>
-    </header>
-
-    <nav class="tab-nav">
+  <header class="main-header">
+    <div class="header-container">
+      <h1>경력확인서 가이드라인</h1>
+      <p class="subtitle">경력확인서 발급 절차 및 예시를 한눈에 확인하세요</p>
+      <nav class="tab-nav">
         <ul>
-            <li><a href="#" data-target="workflow-section" class="nav-item active">업무 절차</a></li>
-            <li><a href="#" data-target="manual-section" class="nav-item">메뉴얼</a></li>
-            <li><a href="#" data-target="examples-section" class="nav-item">예시 자료</a></li>
+          <li><a href="#" data-target="workflow-section" class="nav-item active">안내</a></li>
+          <li><a href="#" data-target="manual-section" class="nav-item">메뉴얼</a></li>
+          <li><a href="#" data-target="examples-section" class="nav-item">예시 자료</a></li>
         </ul>
-    </nav>
+      </nav>
+    </div>
+  </header>
 
     <main>
-        <section id="workflow-section" class="content-display-section active">
-            <!-- <p>인프라기획부 인사기획팀에서는 경력확인서를 발급합니다.</p><br> -->
+           <section id="workflow-section" class="content-display-section active">
 
-            <div class="workflow-diagram-linear">
-                <div class="step decision">
-                    <p class="step-title">신청자: 필요 서류 확인 (경력확인서 or 경력증명서)</p>
-                    <span class="decision-info">
-                        경력확인서: KBS 인프라기획부 / 담당자: 오종원(02-781-5162)<br>
-                        - 정보통신공사협회, 전기공사협회, 기술사, 엔지니어링협회 등<br>
-                        경력증명서: KBS 인사운영부 / 담당자: 안미현(02-781-1411)
-                    </span>
+                <div class="workflow-2col-container">
+                    
+                    <!-- 왼쪽: 업무 설명 -->
+                    <div class="workflow-explanation">
+                        <div class="workflow-steps">
+                        <h2>업무 설명</h2>
+                    </div>
+                        <h3><br>경력확인서란?</h3>
+                        <p>
+                            경력확인서는 방송기술 관련 업무를 수행한 이력을 외부 기관<br>
+                            (정보통신공사협회, 전기공사협회, 엔지니어링협회 등)에 <br>
+                            증빙하기 위해 작성하는 문서입니다.<br><br>
+                            
+                            따라서 경력확인서는 반드시<br>
+                            <mark><strong>적절한 양식에 직접 작성</strong></mark>하셔서 송부해주셔야 합니다.<br><br>
+
+                            KBS인프라기획부에서는 <mark><strong>작성된 '경력확인서'에 대해서 <br>
+                            검토하는 업무</strong></mark>를 진행합니다.<br>
+                        </p>
+
+                        <h3><br>작성 시 유의사항</h3>
+                        <p>
+                            1. 경력확인서 직인 발급에는 최소 1주일의 기간이 걸립니다. <br>
+                            2. 경력확인서의 내용은 경력 사항 검토 중 수정 될 수 있습니다. <br>
+                            3. 경력확인서 초안이 부적합한 경우 재작성을 요청드릴 수 있습니다.<br><br>
+
+                        </p>
+                        
+                    </div>
+
+                    <!-- 오른쪽: 기존 업무절차 -->
+                    <div class="workflow-steps">
+                        <h2>업무 절차</h2>
+                        <div class="workflow-split-layout">
+                            <div class="workflow-row">
+                                <div class="workflow-left">필요 서류 확인<br>(신청자)</div>
+                                <div class="workflow-right">
+                                    경력확인서(KBS 인프라기획부)와 경력증명서(KBS 인사운영부) 중 적합한 서류를 확인합니다.<br>
+                                    각종 협회에 제출할 경력확인서가 필요한 경우, KBS 인프라기획부로 연락합니다.
+                                </div>
+                            </div>
+                            <div class="workflow-row">
+                                <div class="workflow-left">경력확인서 작성 및 송부<br>(신청자)</div>
+                                <div class="workflow-right">
+                                    원하는 협회 양식을 참고하여 초안을 작성한 후 인프라기획부에 송부합니다.
+                                </div>
+                            </div>
+                            <div class="workflow-row">
+                                <div class="workflow-left">검토 및 직인<br>(인프라기획부)</div>
+                                <div class="workflow-right">
+                                    초안을 검토한 후 내부 직인을 찍고 인사운영부로 전달합니다.
+                                </div>
+                            </div>
+                            <div class="workflow-row">
+                                <div class="workflow-left">검토 및 직인<br>(인사운영부)</div>
+                                <div class="workflow-right">
+                                    인사 기록 기반 검토 후 인사운영부 직인을 찍어 인프라기획부에 회신합니다.
+                                </div>
+                            </div>
+                            <div class="workflow-row">
+                                <div class="workflow-left">공사 직인<br>(총무부)</div>
+                                <div class="workflow-right">
+                                    인프라기획부에서 상신한 경력확인서에 직인 결재 상신 후 공사 직인을 날인합니다.
+                                </div>
+                            </div>
+                            <div class="workflow-row">
+                                <div class="workflow-left">최종 회신<br>(인프라기획부)</div>
+                                <div class="workflow-right">
+                                    모든 확인 절차가 완료되면 신청자에게 최종 회신합니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="workflow-1col-container">
+                    <h2 style="margin-top: 2em;">주요 협회 링크</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; line-height: 1.8; font-size: 15px;">
+                        <div>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li><a href="https://www.kica.or.kr/" target="_blank">1. 한국정보통신공사협회 (KICA)</a></li>
+                                <li><a href="https://www.keca.or.kr/" target="_blank">2. 한국전기공사협회 (KECA)</a></li>
+                                <li><a href="https://www.kpea.or.kr/" target="_blank">3. 한국기술사회</a></li>
+                                <li><a href="http://www.kenca.or.kr/main/index.jsp" target="_blank">4. 한국엔지니어링협회 (KENCA)</a></li>
+                                <li><a href="https://homenet.kocea.or.kr:1443/kocea/koc-kr/index.do" target="_blank">5. 한국건설기술인협회 (KOCEA)</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li><a href="https://www.hrdkorea.or.kr/" target="_blank">6. 한국산업인력공단 (HRDK)</a></li>
+                                <li><a href="https://www.kmcca.or.kr/main.do" target="_blank">7. 대한기계설비건설협회 (KMCCA)</a></li>
+                                <li><a href="https://www.kisa.or.kr/" target="_blank">8. ISMS-P (한국인터넷진흥원 KISA)</a></li>
+                                <li><a href="https://www.koita.or.kr/" target="_blank">9. 한국산업기술진흥협회 (KOITA)</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="step decision">
-                    <p class="step-title">신청자: 경력확인서 작성 후 KBS인프라기획부 송부</p>
-                    <span class="decision-info">
-                        1. 작성하고자 하는 협회 양식 다운로드<br>
-                        2. 작성 후 KBS 인프라기획부 송부
-                    </span>
-                </div>
-
-                <div class="step process-flow">
-                    <p class="step-title">KBS인프라기획부: 경력확인서 검토 및 직인 입력</p>
-                    <p class="sub-text-left">
-                        1. 경력확인서 검토 후 담당자 직인 입력<br>
-                        2. 인사운영부 검토 요청
-                    </p>
-                </div>
-
-                <div class="step process-flow">
-                    <p class="step-title">KBS인사운영부: 경력확인서 검토 및 직인 입력</p>
-                    <p class="sub-text-left">
-                        1. 경력확인서 검토 후 담당자 직인 입력<br>
-                        2. 인프라기획부 회신
-                    </p>
-                </div>
-
-                <div class="step process-flow">
-                    <p class="step-title">KBS총무부: 공사 직인 행정</p>
-                    <p class="sub-text-left">
-                        1. 인프라기획부 직인 결재 상신<br>
-                        2. 총무부에서 공사 직인 수행
-                    </p>
-                </div>
-
-                <div class="step end">
-                    <p class="step-title">KBS인프라기획부: 최종 확인 후 신청자 회신</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
        <section id="manual-section" class="content-display-section">
-        <h2>1. 메뉴얼</h2>
-        <p>경력확인서 초안을 직접 작성해야 하는 신청자를 위한 상세 메뉴얼입니다.</p>
+        <p>경력확인서 초안을 직접 작성해야 하는 신청자를 위한 상세 메뉴얼입니다.<br>
+        아래 검색 기능을 활용하세요.
+        </p>
         <div class="manual-search">
             <input type="text" id="manualSearchInput" placeholder="메뉴얼 내 검색 (예: 직급, 유지관리, 간인 등)" />
         </div>
@@ -158,7 +208,63 @@
             </ul>
             <p>※ 자세한 기준은 <strong>"일반직 직명 매뉴얼"</strong> 참조</p>
             <div class="image-container">
-                <img src="./static/직명.png" alt="일반직 직명 매뉴얼 예시" style="max-width: 100%; height: auto; margin-top: 1em;">
+                <!-- <img src="./static/직명.png" alt="일반직 직명 매뉴얼 예시" style="max-width: 100%; height: auto; margin-top: 1em;"> -->
+            <div class="manual-item-table" style="overflow-x: auto;">
+            <h4>1. 본사</h4>
+            <table style="width:100%; border-collapse: collapse; font-size: 14px; border: 1px solid #000; table-layout: fixed;">
+                <colgroup>
+                <col style="width:33%;">
+                <col style="width:33%;">
+                <col style="width:34%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">구분</th>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">직원</th>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">퇴직자</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td style="border: 1px solid #000; text-align: left;">○ 직위 경력자</td><td style="border: 1px solid #000; text-align: center;"></td><td style="border: 1px solid #000; text-align: center;"></td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">국장급 직위 이상 경력자</td><td style="border: 1px solid #000; text-align: center;">국장급</td><td style="border: 1px solid #000; text-align: center;">국장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">부장급 직위 경력자</td><td style="border: 1px solid #000; text-align: center;">부장급</td><td style="border: 1px solid #000; text-align: center;">부장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">팀장(직무대리 포함) 직위 경력자</td><td style="border: 1px solid #000; text-align: center;">차장급</td><td style="border: 1px solid #000; text-align: center;">차장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: left;">○ 일반</td><td style="border: 1px solid #000; text-align: center;"></td><td style="border: 1px solid #000; text-align: center;"></td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">G0(관리직급)</td><td style="border: 1px solid #000; text-align: center;">국장급</td><td style="border: 1px solid #000; text-align: center;">부장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">G0(1직급)</td><td style="border: 1px solid #000; text-align: center;">부장급</td><td style="border: 1px solid #000; text-align: center;">차장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">G1, G2(2직급갑, 을)</td><td style="border: 1px solid #000; text-align: center;">차장급</td><td style="border: 1px solid #000; text-align: center;">차장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">차장대우</td><td style="border: 1px solid #000; text-align: center;">차장급</td><td style="border: 1px solid #000; text-align: center;">차장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">감독</td><td style="border: 1px solid #000; text-align: center;">감독</td><td style="border: 1px solid #000; text-align: center;">감독</td></tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top:2em;">2. 지역</h4>
+            <table style="width:100%; border-collapse: collapse; font-size: 14px; border: 1px solid #000; table-layout: fixed;">
+                <colgroup>
+                <col style="width:33%;">
+                <col style="width:33%;">
+                <col style="width:34%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">구분</th>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">직원</th>
+                    <th style="border: 1px solid #000; padding: 8px; text-align: center;">퇴직자</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td style="border: 1px solid #000; text-align: left;">○ 직위 경력자</td><td style="border: 1px solid #000; text-align: center;"></td><td style="border: 1px solid #000; text-align: center;"></td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">국장급(지역 총국장) 직위 이상 경력자</td><td style="border: 1px solid #000; text-align: center;">국장급</td><td style="border: 1px solid #000; text-align: center;">국장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">부장급(지역 국장) 직위 경력자</td><td style="border: 1px solid #000; text-align: center;">국장급</td><td style="border: 1px solid #000; text-align: center;">부장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">팀장(지역 부장) 직위 경력자</td><td style="border: 1px solid #000; text-align: center;">부장급</td><td style="border: 1px solid #000; text-align: center;">차장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: left;">○ 일반</td><td style="border: 1px solid #000; text-align: center;"></td><td style="border: 1px solid #000; text-align: center;"></td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">G0(관리직급)</td><td style="border: 1px solid #000; text-align: center;">국장급</td><td style="border: 1px solid #000; text-align: center;">부장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">G0(1직급)</td><td style="border: 1px solid #000; text-align: center;">국장급</td><td style="border: 1px solid #000; text-align: center;">부장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">G1, G2(2직급갑, 을)</td><td style="border: 1px solid #000; text-align: center;">부장급</td><td style="border: 1px solid #000; text-align: center;">차장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">차장대우</td><td style="border: 1px solid #000; text-align: center;">차장급</td><td style="border: 1px solid #000; text-align: center;">차장급</td></tr>
+                <tr><td style="border: 1px solid #000; text-align: center;">감독</td><td style="border: 1px solid #000; text-align: center;">감독</td><td style="border: 1px solid #000; text-align: center;">감독</td></tr>
+                </tbody>
+            </table>
             </div>
         </div>
 
@@ -194,96 +300,239 @@
                     <div class="example-pane left">
                     <h3>경력사항</h3>
                     <!-- 지역 경력사항 -->
-                    <div id="career-details-local" class="example-content-pane">
-                        <table style="width:100%; border-collapse: collapse; font-size: 14px;">
+                    <div id="career-details-local" class="example-content-pane active">
+                        <table id="raw-career-table-local" style="width:100%; border-collapse: collapse; font-size: 14px;">
                             <thead>
-                                <tr style="background-color:#f0f0f0;">
-                                    <th style="border:1px solid #ccc; padding:8px;">일자</th>
-                                    <th style="border:1px solid #ccc; padding:8px;">구분</th>
-                                    <th style="border:1px solid #ccc; padding:8px;">직급</th>
-                                    <th style="border:1px solid #ccc; padding:8px;">소속/내용</th>
-                                </tr>
+                            <tr style="background-color:#f0f0f0;">
+                                <th style="border:1px solid #ccc; padding:8px; text-align:center; width:50px;">No.</th>
+                                <th style="border:1px solid #ccc; padding:8px;">일자</th>
+                                <th style="border:1px solid #ccc; padding:8px;">구분</th>
+                                <th style="border:1px solid #ccc; padding:8px;">직급</th>
+                                <th style="border:1px solid #ccc; padding:8px;">소속/내용</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <!-- 예시 데이터 없음 -->
+                            <tr>
+                                <td class="number-cell"></td><td>1995/02/01</td><td>신규</td><td>수습4급</td><td>방송연수원 입사</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>1995/03/01</td><td>전보</td><td>수습4급</td><td>창원방송총국</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>1995/03/13</td><td>전보</td><td>수습4급</td><td>창원방송총국 기술국 R기술부</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>1995/06/01</td><td>전보</td><td>수습4급</td><td>창원방송총국 기술국 TV기술부</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>1995/07/01</td><td>수습해제</td><td>일반직4직급</td><td>창원방송총국 기술국 TV기술부</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>1995/07/10</td><td>전보</td><td>일반직4직급</td><td>진주방송국 감악산중계소</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>1997/03/05</td><td>전보</td><td>일반직4직급</td><td>진주방송국 기술부</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2001/02/15</td><td>전보</td><td>일반직4직급</td><td>창원방송총국 기술국 송출기술부</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2002/07/01</td><td>승진</td><td>일반직3직급</td><td>일반직4직급 → 일반직3직급</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2003/07/01</td><td>대우</td><td>일반직3직급</td><td>차장대우</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2004/08/09</td><td>직제개편</td><td>일반직3직급</td><td>창원방송총국 기술팀</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2005/03/01</td><td>대우</td><td>일반직3직급</td><td>부장대우 (기술팀)</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2007/07/01</td><td>승진</td><td>일반직2직급을</td><td>일반직3직급 → 일반직2직급을</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2009/01/01</td><td>직제개편</td><td>일반직2직급을</td><td>창원방송총국 기술국</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2010/01/01</td><td>승격</td><td>일반직2직급을</td><td>창원방송총국 기술국 부장</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2011/02/01</td><td>전보</td><td>일반직2직급을</td><td>충주방송국</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2014/07/01</td><td>승진</td><td>일반직2직급갑</td><td>일반직2직급을 → 일반직2직급갑</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2019/03/01</td><td>전보</td><td>일반직2직급갑</td><td>창원방송총국 기술국</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2020/01/01</td><td>직급명칭변경</td><td>일반직G1직급</td><td>일반직2직급갑 → 일반직G1직급</td>
+                            </tr>
+                            <tr>
+                                <td class="number-cell"></td><td>2024/02/29</td><td>면직(정년퇴직)</td><td>일반직G1직급</td><td>인사규정 제42조(정년)에 의거 면직</td>
+                            </tr>
                             </tbody>
                         </table>
-                        <p style="margin-top: 20px; font-style: italic; font-size: 0.9em; text-align: right;">※ 지역 경력사항은 예시를 위한 가상 데이터입니다.</p>
-                    </div>
+                        <p style="margin-top: 20px; font-style: italic; font-size: 0.9em; text-align: right;">
+                            ※ 지역 경력사항은 예시를 위한 가상 데이터입니다.
+                        </p>
+                        </div>
+
                     <div id="career-details-hq" class="example-content-pane active">
                         <table id="raw-career-table" style="width:100%; border-collapse: collapse; font-size: 14px;">
                             <thead>
-                                <tr style="background-color:#f0f0f0;">
-                                    <th style="border:1px solid #ccc; padding:8px;">일자</th>
-                                    <th style="border:1px solid #ccc; padding:8px;">구분</th>
-                                    <th style="border:1px solid #ccc; padding:8px;">직급</th>
-                                    <th style="border:1px solid #ccc; padding:8px;">소속/내용</th>
-                                </tr>
+                            <tr style="background-color:#f0f0f0;">
+                                <th style="border:1px solid #ccc; padding:8px; text-align:center; width:50px;">No.</th>
+                                <th style="border:1px solid #ccc; padding:8px;">일자</th>
+                                <th style="border:1px solid #ccc; padding:8px;">구분</th>
+                                <th style="border:1px solid #ccc; padding:8px;">직급</th>
+                                <th style="border:1px solid #ccc; padding:8px;">소속/내용</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr><td>1994/03/04</td><td>신규</td><td>수습4급</td><td>신입사원 입사</td></tr>
-                                <tr><td>1994/05/04</td><td>전보</td><td>수습4급</td><td>청주방송총국</td></tr>
-                                <tr><td>1994/05/11</td><td>전보</td><td>수습4급</td><td>청주방송총국 대암산송신소</td></tr>
-                                <tr><td>1994/09/04</td><td>수습해제</td><td>일반직4직급</td><td>청주 방송총국 대암산송신소</td></tr>
-                                <tr><td>1997/12/28</td><td>전보</td><td>일반직4직급</td><td>대전방송총국 기술국 TV기술부</td></tr>
-                                <tr><td>2000/09/04</td><td>승진</td><td>일반직3직급</td><td>일반직4직급 → 일반직3직급</td></tr>
-                                <tr><td>2001/01/04</td><td>직제개편</td><td>일반직3직급</td><td>대전방송총국 기술국 제작기술부</td></tr>
-                                <tr><td>2002/04/18</td><td>전보</td><td>일반직3직급</td><td>라디오기술국 (라디오기술3)</td></tr>
-                                <tr><td>2002/06/20</td><td>직제개편</td><td>일반직3직급</td><td>라디오기술국</td></tr>
-                                <tr><td>2005/10/12</td><td>전보</td><td>일반직3직급</td><td>TV제작본부 TV제작기술팀</td></tr>
-                                <tr><td>2006/06/14</td><td>직제개편</td><td>일반직3직급</td><td>TV제작본부 예능기술팀</td></tr>
-                                <tr><td>2006/09/04</td><td>승진</td><td>일반직2직급을</td><td>일반직3직급 → 일반직2직급을</td></tr>
-                                <tr><td>2007/01/04</td><td>전보</td><td>일반직2직급을</td><td>기술본부 네트워크팀</td></tr>
-                                <tr><td>2009/09/04</td><td>승진</td><td>일반직2직급갑</td><td>일반직2직급을 → 일반직2직급갑</td></tr>
-                                <tr><td>2011/06/14</td><td>전보</td><td>일반직2직급갑</td><td>TV제작본부 TV기술국</td></tr>
-                                <tr><td>2011/12/14</td><td>직제개편</td><td>일반직2직급갑</td><td>제작리소스센터 TV기술국</td></tr>
-                                <tr><td>2012/03/04</td><td>직제개편</td><td>일반직2직급갑</td><td>기술본부 방송시설국 제작송신시설팀</td></tr>
-                                <tr><td>2012/09/04</td><td>승격</td><td>일반직2직급갑</td><td>뉴미디어·테크놀로지본부 방송시설국 제작시설부 팀장</td></tr>
-                                <tr><td>2013/09/04</td><td>승격</td><td>일반직2직급갑</td><td>기술본부 방송시설국 제작시설부장</td></tr>
-                                <tr><td>2014/10/14</td><td>전보</td><td>일반직2직급갑</td><td>기술본부 네트워크관리국 화성송신소장</td></tr>
-                                <tr><td>2016/10/14</td><td>전보</td><td>일반직2직급갑</td><td>미래사업본부 인프라투자국 시스템구축부장</td></tr>
-                                <tr><td>2017/05/26</td><td>전보</td><td>일반직2직급갑</td><td>제작기술본부 송출국 R송출부</td></tr>
-                                <tr><td>2018/12/05</td><td>직제개편</td><td>일반직2직급갑</td><td>기술본부 제작기술센터 라디오기술국</td></tr>
-                                <tr><td>2019/06/20</td><td>전보</td><td>일반직2직급갑</td><td>제작기술본부 TV기술국</td></tr>
-                                <tr><td>2020/02/04</td><td>승격</td><td>일반직2직급갑</td><td>기술본부 미디어인프라국장</td></tr>
-                                <tr><td>2021/03/04</td><td>직급명칭변경</td><td>일반직G1직급</td><td>일반직2직급갑→일반직G1직급</td></tr>
-                                <tr><td>2021/03/04</td><td>기타발령</td><td>일반직M1직급</td><td>일반직G1직급→일반직M1직급</td></tr>
-                                <tr><td>2021/03/04</td><td>호봉제전환</td><td>일반직M1직급</td><td>호봉제 전환</td></tr>
-                                <tr><td>2024/03/04</td><td>전보</td><td>일반직G1직급</td><td>전략기획실 전략기획국 전략개발부</td></tr>
-                                <tr><td>2024/03/04</td><td>파견</td><td>일반직G1직급</td><td>한국지상파UHD방송협회 (사무총장) 파견</td></tr>
-                                <tr><td>2024/03/04</td><td>파견해제</td><td>일반직G1직급</td><td>파견해제</td></tr>
-                                <tr><td>2024/03/04</td><td>전보</td><td>일반직G1직급</td><td>기술본부 방송네트워크국</td></tr>
-                                <tr><td>2034/03/04</td><td>퇴직</td><td>일반직G1직급</td><td>인사규정 제42조(정년)에 의거 퇴직</td></tr>
-                                <tr><td colspan="4" style="background-color:#eee; font-weight:bold;">퇴직 후 재고용 (연봉계약직)</td></tr>
-                                <tr><td>2034/06/04</td><td>재고용계약</td><td>사원</td><td>송신플랫폼국 화성송신소</td></tr>
-                                <tr><td>2034/10/04</td><td>전보계약</td><td>사원</td><td>기술본부 UHD자문위원회 기술자문</td></tr>
-                                <tr><td>2035/11/04</td><td>퇴직</td><td>사원</td><td>계약기간 만료, 퇴직 처리</td></tr>
+                            <tr><td class="number-cell"></td><td>1994/03/04</td><td>신규</td><td>수습4급</td><td>신입사원 입사</td></tr>
+                            <tr><td class="number-cell"></td><td>1994/05/04</td><td>전보</td><td>수습4급</td><td>청주방송총국</td></tr>
+                            <tr><td class="number-cell"></td><td>1994/05/11</td><td>전보</td><td>수습4급</td><td>청주방송총국 대암산송신소</td></tr>
+                            <tr><td class="number-cell"></td><td>1994/09/04</td><td>수습해제</td><td>일반직4직급</td><td>청주 방송총국 대암산송신소</td></tr>
+                            <tr><td class="number-cell"></td><td>1997/12/28</td><td>전보</td><td>일반직4직급</td><td>대전방송총국 기술국 TV기술부</td></tr>
+                            <tr><td class="number-cell"></td><td>2000/09/04</td><td>승진</td><td>일반직3직급</td><td>일반직4직급 → 일반직3직급</td></tr>
+                            <tr><td class="number-cell"></td><td>2001/01/04</td><td>직제개편</td><td>일반직3직급</td><td>대전방송총국 기술국 제작기술부</td></tr>
+                            <tr><td class="number-cell"></td><td>2002/04/18</td><td>전보</td><td>일반직3직급</td><td>라디오기술국 (라디오기술3)</td></tr>
+                            <tr><td class="number-cell"></td><td>2002/06/20</td><td>직제개편</td><td>일반직3직급</td><td>라디오기술국</td></tr>
+                            <tr><td class="number-cell"></td><td>2005/10/12</td><td>전보</td><td>일반직3직급</td><td>TV제작본부 TV제작기술팀</td></tr>
+                            <tr><td class="number-cell"></td><td>2006/06/14</td><td>직제개편</td><td>일반직3직급</td><td>TV제작본부 예능기술팀</td></tr>
+                            <tr><td class="number-cell"></td><td>2006/09/04</td><td>승진</td><td>일반직2직급을</td><td>일반직3직급 → 일반직2직급을</td></tr>
+                            <tr><td class="number-cell"></td><td>2007/01/04</td><td>전보</td><td>일반직2직급을</td><td>기술본부 네트워크팀</td></tr>
+                            <tr><td class="number-cell"></td><td>2009/09/04</td><td>승진</td><td>일반직2직급갑</td><td>일반직2직급을 → 일반직2직급갑</td></tr>
+                            <tr><td class="number-cell"></td><td>2011/06/14</td><td>전보</td><td>일반직2직급갑</td><td>TV제작본부 TV기술국</td></tr>
+                            <tr><td class="number-cell"></td><td>2011/12/14</td><td>직제개편</td><td>일반직2직급갑</td><td>제작리소스센터 TV기술국</td></tr>
+                            <tr><td class="number-cell"></td><td>2012/03/04</td><td>직제개편</td><td>일반직2직급갑</td><td>기술본부 방송시설국 제작송신시설팀</td></tr>
+                            <tr><td class="number-cell"></td><td>2012/09/04</td><td>승격</td><td>일반직2직급갑</td><td>뉴미디어·테크놀로지본부 방송시설국 제작시설부 팀장</td></tr>
+                            <tr><td class="number-cell"></td><td>2013/09/04</td><td>승격</td><td>일반직2직급갑</td><td>기술본부 방송시설국 제작시설부장</td></tr>
+                            <tr><td class="number-cell"></td><td>2014/10/14</td><td>전보</td><td>일반직2직급갑</td><td>기술본부 네트워크관리국 화성송신소장</td></tr>
+                            <tr><td class="number-cell"></td><td>2016/10/14</td><td>전보</td><td>일반직2직급갑</td><td>미래사업본부 인프라투자국 시스템구축부장</td></tr>
+                            <tr><td class="number-cell"></td><td>2017/05/26</td><td>전보</td><td>일반직2직급갑</td><td>제작기술본부 송출국 R송출부</td></tr>
+                            <tr><td class="number-cell"></td><td>2018/12/05</td><td>직제개편</td><td>일반직2직급갑</td><td>기술본부 제작기술센터 라디오기술국</td></tr>
+                            <tr><td class="number-cell"></td><td>2019/06/20</td><td>전보</td><td>일반직2직급갑</td><td>제작기술본부 TV기술국</td></tr>
+                            <tr><td class="number-cell"></td><td>2020/02/04</td><td>승격</td><td>일반직2직급갑</td><td>기술본부 미디어인프라국장</td></tr>
+                            <tr><td class="number-cell"></td><td>2021/03/04</td><td>직급명칭변경</td><td>일반직G1직급</td><td>일반직2직급갑→일반직G1직급</td></tr>
+                            <tr><td class="number-cell"></td><td>2021/03/04</td><td>기타발령</td><td>일반직M1직급</td><td>일반직G1직급→일반직M1직급</td></tr>
+                            <tr><td class="number-cell"></td><td>2021/03/04</td><td>호봉제전환</td><td>일반직M1직급</td><td>호봉제 전환</td></tr>
+                            <tr><td class="number-cell"></td><td>2024/03/04</td><td>전보</td><td>일반직G1직급</td><td>전략기획실 전략기획국 전략개발부</td></tr>
+                            <tr><td class="number-cell"></td><td>2024/03/04</td><td>파견</td><td>일반직G1직급</td><td>한국지상파UHD방송협회 (사무총장) 파견</td></tr>
+                            <tr><td class="number-cell"></td><td>2024/03/04</td><td>파견해제</td><td>일반직G1직급</td><td>파견해제</td></tr>
+                            <tr><td class="number-cell"></td><td>2024/03/04</td><td>전보</td><td>일반직G1직급</td><td>기술본부 방송네트워크국</td></tr>
+                            <tr><td class="number-cell"></td><td>2034/03/04</td><td>퇴직</td><td>일반직G1직급</td><td>인사규정 제42조(정년)에 의거 퇴직</td></tr>
+                            <tr><td colspan="5" style="background-color:#eee; font-weight:bold;">퇴직 후 재고용 (연봉계약직)</td></tr>
+                            <tr><td class="number-cell"></td><td>2034/06/04</td><td>재고용계약</td><td>사원</td><td>송신플랫폼국 화성송신소</td></tr>
+                            <tr><td class="number-cell"></td><td>2034/10/04</td><td>전보계약</td><td>사원</td><td>기술본부 UHD자문위원회 기술자문</td></tr>
+                            <tr><td class="number-cell"></td><td>2035/11/04</td><td>퇴직</td><td>사원</td><td>계약기간 만료, 퇴직 처리</td></tr>
                             </tbody>
                         </table>
-                        <p style="margin-top: 20px; font-style: italic; font-size: 0.9em; text-align: right;">※ 본 경력사항은 예시를 위한 가상 데이터입니다.</p>
-                    </div>
+                        <p style="margin-top: 20px; font-style: italic; font-size: 0.9em; text-align: right;">
+                            ※ 본 경력사항은 예시를 위한 가상 데이터입니다.
+                        </p>
+                        </div>
+
                 </div>
 
 
                     <div class="example-pane right">
                         <h3>경력확인서</h3>
-                        <div id="certificate-view-local" class="example-content-pane">
-                            <table style="width:100%; border-collapse: collapse; font-size: 14px;">
-                                <thead>
-                                    <tr style="background-color:#f0f0f0;">
-                                        <th style="border:1px solid #ccc; padding:8px; text-align:center;">No.</th>
-                                        <th style="border:1px solid #ccc; padding:8px; text-align:center;">근무기간</th>
-                                        <th style="border:1px solid #ccc; padding:8px; text-align:center;">소속부서</th>
-                                        <th style="border:1px solid #ccc; padding:8px; text-align:center;">직위/직급</th>
-                                        <th style="border:1px solid #ccc; padding:8px; text-align:center;">담당업무</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- 예시 데이터 없음 -->
-                                </tbody>
-                            </table>
-                            <p style="margin-top: 20px; font-style: italic; font-size: 0.9em; text-align: right;">※ 지역 경력확인서는 예시를 위한 가상 데이터입니다.</p>
-                        </div>
+                        <div id="certificate-view-local" class="example-content-pane active">
+                        <table id="consolidated-career-table-local" style="width:100%; border-collapse: collapse; font-size: 14px;">
+                            <thead>
+                                <tr style="background-color:#f0f0f0;">
+                                    <th style="border:1px solid #ccc; padding:8px; text-align:center;">No.</th>
+                                    <th style="border:1px solid #ccc; padding:8px; text-align:center;">근무기간</th>
+                                    <th style="border:1px solid #ccc; padding:8px; text-align:center;">소속부서</th>
+                                    <th style="border:1px solid #ccc; padding:8px; text-align:center;">직위/직급</th>
+                                    <th style="border:1px solid #ccc; padding:8px; text-align:center;">담당업무</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">1</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">1995.03.01. ~ 1995.03.12.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">창원방송총국</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">직원</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">2</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">1995.03.13. ~ 1995.05.31.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">창원방송총국 기술국 R기술부</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">직원</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">3</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">1995.06.01. ~ 1995.07.09.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">창원방송총국 기술국 TV기술부</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">직원</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">4</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">1995.07.10. ~ 1997.03.04.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">진주방송국 감악산중계소</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">직원</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">5</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">1997.03.05. ~ 2001.02.14.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">진주방송국 기술부</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">직원</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">6</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">2001.02.15. ~ 2003.06.30.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">창원방송총국 기술국 송출기술부</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">직원</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">7</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">2003.07.01. ~ 2005.02.28.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">창원방송총국 기술국</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">차장급</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">8</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">2005.03.01. ~ 2009.12.31.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">창원방송총국 기술국</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">부장급</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">9</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">2010.01.01. ~ 2011.01.31.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">창원방송총국 기술국</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">부장</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리 총괄</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">10</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">2011.02.01. ~ 2019.02.28.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">충주방송국</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">부장급</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">11</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">2019.03.01. ~ 2024.02.28.</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">창원방송총국 기술국</td>
+                                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">부장급</td>
+                                    <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top: 20px; font-style: italic; font-size: 0.9em; text-align: right;">※ 지역 경력확인서는 예시를 위한 가상 데이터입니다.</p>
+                    </div>
                         <div id="certificate-view-hq" class="example-content-pane active">
                             <table id="consolidated-career-table" style="width:100%; border-collapse: collapse; font-size: 14px;">
                                 <thead>
@@ -298,7 +547,7 @@
                                 <tbody>
                                     <tr>
                                         <td style="border:1px solid #ccc; padding:8px; text-align:center;">1</td>
-                                        <td style="border:1px solid #ccc; padding:8px;">1994.03.04. ~ 1997.12.27.</td>
+                                        <td style="border:1px solid #ccc; padding:8px;">1994.05.04. ~ 1997.12.27.</td>
                                         <td style="border:1px solid #ccc; padding:8px;">청주방송총국 대암산송신소</td>
                                         <td style="border:1px solid #ccc; padding:8px; text-align:center;">직원</td>
                                         <td style="border:1px solid #ccc; padding:8px;">방송시설 유지관리</td>
@@ -419,7 +668,8 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 [회사명/개인명]. All rights reserved.</p>
+        <p> 2025 KBS 인프라기획부. 담당자 : 오종원(02-781-5162, ooo@kbs.co.kr)<br>
+            All rights reserved.</p>
     </footer>
 
     <script src="./script.js" defer></script>

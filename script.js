@@ -184,55 +184,71 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const colorPalette = [
-        "#fce4ec", "#e3f2fd", "#e8f5e9", "#fff3e0", "#ede7f6", "#f9fbe7",
-        "#e0f2f1", "#fbe9e7", "#f3e5f5", "#e0f7fa"
+        "#fce4ec", "#e3f2fd", "#e8f5e9", "#fff3e0", "#ede7f6",
+        "#f9fbe7", "#e0f2f1", "#fbe9e7", "#f3e5f5", "#e0f7fa"
     ];
 
-    const periodColorMap = {};
-    let colorIndex = 0;
-
-    // 오른쪽 테이블의 근무기간을 기준으로 색을 매핑
-    const certTable = document.querySelector("#consolidated-career-table tbody");
-    const careerTable = document.querySelector("#raw-career-table tbody");
-
-    if (!certTable || !careerTable) return;
-
-    const certRows = Array.from(certTable.querySelectorAll("tr"));
-
-    certRows.forEach(row => {
-        const periodCell = row.children[1];
-        if (!periodCell) return;
-
-        const periodText = periodCell.textContent.trim();
-        if (!periodText.includes("~")) return;
-
-        if (!periodColorMap[periodText]) {
-            periodColorMap[periodText] = colorPalette[colorIndex % colorPalette.length];
-            colorIndex++;
+    const sections = [
+        {
+            certSelector: "#consolidated-career-table tbody",    // 본사 경력확인서
+            rawSelector:  "#raw-career-table tbody"              // 본사 경력사항
+        },
+        {
+            certSelector: "#consolidated-career-table-local tbody", // 지역 경력확인서
+            rawSelector:  "#raw-career-table-local tbody"           // 지역 경력사항
         }
+    ];
 
-        const color = periodColorMap[periodText];
-        row.style.backgroundColor = color;
+    sections.forEach(({ certSelector, rawSelector }) => {
+        const certTbody = document.querySelector(certSelector);
+        const rawTbody  = document.querySelector(rawSelector);
+        if (!certTbody || !rawTbody) return;
 
-        // 좌측 raw 테이블의 기간 텍스트와도 비교 (범위 매핑은 수동 조정 필요)
-        highlightMatchingRawRow(periodText, color);
-    });
+        const periodColorMap = {};
+        let colorIndex = 0;
 
-    function highlightMatchingRawRow(targetPeriod, color) {
-        const rawRows = Array.from(careerTable.querySelectorAll("tr"));
-        const [startRaw, endRaw] = targetPeriod.replace(/[.]/g, "").split("~").map(s => s.trim());
+        Array.from(certTbody.rows).forEach(certRow => {
+            const noCell     = certRow.cells[0];
+            const periodCell = certRow.cells[1];
+            if (!noCell || !periodCell) return;
 
-        rawRows.forEach(row => {
-            const dateCell = row.children[0];
-            if (!dateCell) return;
+            const certNo    = noCell.textContent.trim();
+            const periodTxt = periodCell.textContent.trim();
+            if (!periodTxt.includes("~")) return;
 
-            const dateVal = dateCell.textContent.replace(/\//g, "").trim();
-            if (dateVal >= startRaw && dateVal <= endRaw) {
-                row.style.backgroundColor = color;
+            if (!periodColorMap[periodTxt]) {
+            periodColorMap[periodTxt] = colorPalette[colorIndex++ % colorPalette.length];
             }
+            const color = periodColorMap[periodTxt];
+            certRow.style.backgroundColor = color;
+
+            const [start, end] = periodTxt
+            .replace(/\./g, "")
+            .split("~")
+            .map(s => s.trim());
+
+            Array.from(rawTbody.rows).forEach(rawRow => {
+            const dateCell = rawRow.cells[1];  // 0번째가 번호, 1번째가 날짜로 인덱스 변경
+            if (!dateCell) return;
+            const rawDate = dateCell.textContent.replace(/[\/\.]/g, "").trim();
+
+            if (rawDate >= start && rawDate <= end) {
+                // 배경색
+                rawRow.style.backgroundColor = color;
+                // 번호 채우기
+                const numberCell = rawRow.querySelector('.number-cell');
+                if (numberCell) {
+                numberCell.textContent = certNo;
+                numberCell.classList.add('number-prefix');  // 배지 스타일 적용
+                }
+            }
+            });
         });
-    }
+        });
+
 });
+
+
 
 
 // 페이지 로드 시 '본사' 탭을 기본으로 선택

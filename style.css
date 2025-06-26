@@ -8,63 +8,74 @@ body {
     color: #333;
 }
 
-/* 헤더 */
+/* ========== 헤더 + 메인 내비게이션 ========== */
 .main-header {
-    background: linear-gradient(to right, #004499, #0056b3);
-    color: white;
-    padding: 2rem 1rem;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: linear-gradient(to right, #294eb5, #4f82ce); /* 더 깊고 세련된 푸른 그라디언트 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 그림자 강화 */
+  padding: 2rem 0; /* 패딩 조절 */
+  color: white; /* 헤더 텍스트 색상을 흰색으로 통일 */
+  text-align: center;
 }
 
-.header-container h1 {
-    margin: 0;
-    font-size: 2rem;
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-.subtitle {
-    margin-top: 0.5rem;
-    font-weight: 300;
-    font-size: 1.1rem;
+.main-header h1 {
+  margin: 0;
+  font-size: 2.5rem; /* 폰트 크기 약간 키움 */
+  color: #ffffff; /* 흰색으로 변경 */
+}
+
+.main-header .subtitle {
+  margin-top: 0.8rem; /* 마진 조절 */
+  color: rgba(255, 255, 255, 0.9); /* 부제목 색상 흰색 계열로 변경 */
+  font-weight: 300;
+  font-size: 1.2rem; /* 폰트 크기 약간 키움 */
 }
 
 /* 탭 내비게이션 (링크형 스타일) */
-.tab-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    background-color: transparent;
-    padding: 1rem 0;
-    margin: 0;
-    border-bottom: 1px solid #ccc;
+.tab-nav {
+  /* background-color: transparent; /* 헤더와 분리되도록 */
+  background-color: #d2dcec; /* 메인 배경색과 동일하게 */
+  padding: 1rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* 미묘한 그림자 추가 */
 }
 
-.tab-nav li {
-    list-style: none;
+.tab-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* 탭 간격 조절 */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .tab-nav a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding: 0.5rem 0;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
+  text-decoration: none;
+  color: #333; /* 기본 텍스트 색상 */
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem; /* 패딩 조절 */
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: inline-block; /* 패딩 적용을 위해 */
 }
 
 .tab-nav a:hover {
-    color: #0056b3;
-    border-bottom: 2px solid #ccc;
+  background-color: #e3f2fd; /* 연한 푸른색 배경 */
+  color: #003f7f; /* 진한 푸른색 텍스트 */
+  /* border-bottom: 2px solid #a8d7f7; /* 호버 시 밑줄 색상 변경 */
 }
 
 .tab-nav a.active {
-    color: #0056b3;
-    font-weight: bold;
-    border-bottom: 3px solid #0056b3;
+  background-color: #0056b3; /* 활성화 시 진한 푸른색 배경 */
+  color: #ffffff; /* 활성화 시 흰색 텍스트 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 활성화 시 그림자 강조 */
+  font-weight: bold;
 }
-
-
 /* 메인 콘텐츠 */
 main {
     padding: 20px;
@@ -356,4 +367,71 @@ footer {
     color: white;
     margin-top: 30px;
     font-size: 0.9em;
+}
+.workflow-2col-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.workflow-explanation,
+.workflow-steps {
+    flex: 1 1 45%;
+    min-width: 320px;
+}
+
+.workflow-split-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.workflow-row {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px dotted #ccc;
+    padding: 12px 0;
+    gap: 16px;
+}
+
+.workflow-left {
+    text-align: center;
+    background-color: #e0f7ff;
+    width: 30%;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #b2e4f3;
+
+}
+
+.workflow-right {
+    width: 70%;
+    text-align: left;
+}
+
+.mark-important {
+    background-color: #fff2ac;
+    font-weight: bold;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+.number-prefix {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;        /* 높이와 같게 해서 수직 가운데 정렬 */
+    border-radius: 50%;       /* 완전한 원 형태 */
+    color: #e70808;              /* 흰색 숫자 */
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.9em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3); /* 살짝 그림자 추가로 부각 */
+    vertical-align: middle;   /* 텍스트 라인과 맞추기 */
+}
+
+#raw-career-table th:first-child,
+#raw-career-table-local th:first-child {
+  width: 10px;
 }
