@@ -1,7 +1,7 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig, staticFile, Easing } from 'remotion';
 
-const C = { bg: '#f5f5f7', white: '#ffffff', ink: '#1d1d1f', ink2: '#6e6e73', ink3: '#86868b', line: '#d2d2d7', blue: '#0071e3', seal: '#d1342b' };
+const C = { bg: '#f5f5f7', white: '#ffffff', ink: '#1d1d1f', ink2: '#6e6e73', ink3: '#86868b', line: '#d2d2d7', blue: '#0071e3', seal: '#d1342b', red: '#e0241b' };
 const FONT = 'Pretendard';
 const fontCss = ['Regular:400', 'SemiBold:600', 'Bold:700', 'ExtraBold:800'].map(s => {
   const [n, w] = s.split(':');
@@ -9,10 +9,18 @@ const fontCss = ['Regular:400', 'SemiBold:600', 'Bold:700', 'ExtraBold:800'].map
 }).join('');
 
 const STEPS = [
-  { wk: '1주', t: '신청 접수', d: '첫째 주 수요일 마감' },
-  { wk: '2주', t: '작성본 발송', d: '근무경력을 채운 HWPX' },
-  { wk: '3주', t: '참여사업명 회신', d: '신청자가 작성' },
-  { wk: '4주', t: '직인, 발급', d: '인사운영부, 총무부 직인' },
+  { wk: '1주', t: '신청 접수', d: '일요일 마감' },
+  { wk: '2주', t: '인사기록 반영본 발송', d: '담당자 → 신청자' },
+  { wk: '3주', t: '참여사업명 회신', d: '신청자 작성' },
+  { wk: '4주', t: '검토, 직인, 송부', d: '인사운영부, 총무부' },
+];
+const CAPS = [
+  '접수부터 발급까지 4주.',
+  '첫째 주 일요일, 신청을 마감합니다.',
+  '근무경력을 채운 HWPX를 보냅니다.',
+  '참여사업명(업무내역)을 써서 회신합니다.',
+  '검토와 직인을 거쳐 메일로 보냅니다.',
+  '매월 넷째 주, 경력확인서를 받습니다.',
 ];
 const START = 40, SPAN = 62;               // 단계마다 62프레임
 const ease = Easing.bezier(0.2, 0.7, 0.2, 1);
@@ -65,10 +73,19 @@ export const Flow = () => {
   return (
     <AbsoluteFill style={{ background: C.bg, fontFamily: FONT, opacity: fadeAll }}>
       <style>{fontCss}</style>
-      <div style={{ position: 'absolute', left: 80, top: 64, opacity: titleIn, transform: `translateY(${(1 - titleIn) * 16}px)` }}>
+      <div style={{ position: 'absolute', left: 80, right: 80, top: 56, opacity: titleIn }}>
         <div style={{ font: `600 22px ${FONT}`, color: C.ink2, letterSpacing: '-0.02em' }}>경력확인서 한 달의 흐름</div>
-        <div style={{ font: `800 52px/1.15 ${FONT}`, color: C.ink, letterSpacing: '-0.03em', marginTop: 8 }}>
-          {endT < 0.5 ? '접수부터 발급까지 4주.' : '매월 넷째 주에 발급합니다.'}
+        <div style={{ position: 'relative', height: 72, marginTop: 10 }}>
+          {CAPS.map((c, k) => {
+            const from = k === 0 ? 0 : k === 5 ? START + SPAN * 4 : START + SPAN * (k - 1);
+            const to = k === 0 ? START : k === 5 ? durationInFrames + 30 : START + SPAN * k;
+            const inP = k === 0 ? 1 : interpolate(frame, [from, from + 12], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: ease });
+            const outP = interpolate(frame, [to - 8, to + 2], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+            const o = Math.min(inP, 1 - outP);
+            if (o <= 0) return null;
+            return <div key={k} style={{ position: 'absolute', left: 0, top: 0, font: `800 50px/1.2 ${FONT}`, color: k === 0 ? C.ink : C.red, letterSpacing: '-0.03em',
+              opacity: o, transform: `translateY(${(1 - inP) * 18 - outP * 10}px)`, whiteSpace: 'nowrap' }}>{c}</div>;
+          })}
         </div>
       </div>
       {/* 진행 막대 */}
@@ -89,7 +106,7 @@ export const Flow = () => {
             <div key={i} style={{ position: 'relative', background: bg, borderRadius: 28, padding: '28px 26px', overflow: 'hidden',
               opacity: tIn, transform: `translateY(${(1 - tIn) * 30}px) scale(${1 + lit * 0.03})` }}>
               <div style={{ font: `800 40px/1 ${FONT}`, color: done && lit < 0.5 ? C.ink3 : fg, letterSpacing: '-0.03em' }}>{s.wk}</div>
-              <div style={{ font: `700 22px ${FONT}`, color: fg, marginTop: 18, letterSpacing: '-0.02em' }}>{s.t}</div>
+              <div style={{ font: `700 21px/1.3 ${FONT}`, color: fg, marginTop: 18, letterSpacing: '-0.03em' }}>{s.t}</div>
               <div style={{ font: `400 15px ${FONT}`, color: lit > 0.5 ? '#a1a1a6' : C.ink2, marginTop: 6 }}>{s.d}</div>
               <div style={{ position: 'absolute', left: 26, bottom: 26, opacity: Math.max(lit, i === 3 ? endT : 0) }}>
                 {(on || (i === 3 && endT > 0) || lit > 0.05) && <Illo i={i} p={i === 3 && endT > 0 ? 1 : p} />}
