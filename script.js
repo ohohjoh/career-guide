@@ -1,8 +1,8 @@
 // ───── 운영 설정 ─────
 const CONFIG = {
-  deadlineWeekday: 3,        // 마감 요일 (0=일 … 3=수)
+  deadlineWeekday: 3,        // 첫째 주를 정하는 기준 요일(수). 마감은 그 주 일요일
   deadlineWeekOfMonth: 1,    // 매월 몇째 주
-  to: 'KOBIS 메일, 인프라기획부 오종원',
+  to: 'KOBIS 메일 또는 웹메일(ooo@kbs.co.kr), 인프라기획부 오종원',
 };
 
 const DAY = 864e5;
@@ -10,7 +10,8 @@ const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + 
 function deadlineOf(year, month) {           // month: 0~11 (넘치면 다음 해)
   const first = new Date(year, month, 1);
   const shift = (CONFIG.deadlineWeekday - first.getDay() + 7) % 7;
-  return new Date(first.getFullYear(), first.getMonth(), 1 + shift + 7 * (CONFIG.deadlineWeekOfMonth - 1));
+  // 첫째 주 = 그달 첫 수요일이 든 주(월~일). 마감은 그 주 일요일
+  return new Date(first.getFullYear(), first.getMonth(), 1 + shift + 7 * (CONFIG.deadlineWeekOfMonth - 1) + 4);
 }
 function nextDeadline(today) {
   let d = deadlineOf(today.getFullYear(), today.getMonth());
@@ -20,7 +21,7 @@ function nextDeadline(today) {
 // 한 달 주기: 마감이 든 주의 월요일부터 4주
 function cycleOf(deadline) {
   const mon = addDays(deadline, -((deadline.getDay() + 6) % 7));
-  return { deadline, weeks: [0, 1, 2, 3].map(i => ({ mon: addDays(mon, 7 * i), fri: addDays(mon, 7 * i + 4) })) };
+  return { deadline, weeks: [0, 1, 2, 3].map(i => ({ mon: addDays(mon, 7 * i), fri: addDays(mon, 7 * i + 6) })) };
 }
 const ymd = d => `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}.(${'일월화수목금토'[d.getDay()]})`;
 const md = d => `${d.getMonth() + 1}.${d.getDate()}.`;
@@ -196,4 +197,70 @@ document.addEventListener('DOMContentLoaded', () => {
   if (reduce) { v.removeAttribute('autoplay'); v.pause(); }
   b.addEventListener('click', () => { v.paused ? v.play() : v.pause(); });
   v.addEventListener('play', sync); v.addEventListener('pause', sync); sync();
+})();
+
+// ───── 상단 날짜 칩: 이번 달 마감(접수중/마감), 다음 달 마감 ─────
+(() => {
+  const $ = id => document.getElementById(id);
+  if (!$('cur-date')) return;
+  const n = new Date(), today = new Date(n.getFullYear(), n.getMonth(), n.getDate());
+  const cur = deadlineOf(today.getFullYear(), today.getMonth());
+  const nxt = deadlineOf(today.getFullYear(), today.getMonth() + 1);
+  const md2 = d => `${d.getMonth() + 1}월 ${d.getDate()}일`;
+  const open = today <= cur;
+  $('cur-label').textContent = `${cur.getMonth() + 1}월 접수일`;
+  $('cur-date').textContent = md2(cur);
+  $('cur-state').hidden = open;
+  $('cur-state').textContent = '마감';
+  $('cur-state').className = 'closed';
+  $('nxt-label').textContent = `${nxt.getMonth() + 1}월 마감일`;
+  $('nxt-date').textContent = md2(nxt);
+  document.getElementById(open ? 'chip-cur' : 'chip-nxt').classList.add('active');
+})();
+
+// ───── 순서대로 진행하기: 일정 → 신청 전 확인 → 준비물 → 신청 메일 ─────
+(() => {
+  const steps = ['schedule', 'before', 'prepare', 'mail'];
+  const bar = document.getElementById('guidebar'), btn = document.getElementById('guide-next');
+  if (!bar || !btn) return;
+  let cur = -1, active = false;
+  const items = [...bar.querySelectorAll('li')];
+  const checks = [...document.querySelectorAll('.pre')];
+  const go = i => { document.getElementById(steps[i])?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); };
+  function render() {
+    items.forEach((li, k) => { li.classList.toggle('cur', k === cur); li.classList.toggle('done', k < cur); });
+    const allChecked = checks.every(c => c.checked);
+    if (cur === 2 && !allChecked) { btn.disabled = true; btn.textContent = `준비물 확인 ${checks.filter(c => c.checked).length}/4`; }
+    else if (cur >= 3) { btn.disabled = false; btn.textContent = '안내 닫기'; document.getElementById('guide-done').hidden = false; }
+    else { btn.disabled = false; btn.textContent = '다음 단계'; }
+  }
+  function start(i = 0) { active = true; bar.hidden = false; cur = i; render(); go(i); }
+  document.getElementById('guide-start')?.addEventListener('click', e => { e.preventDefault(); start(0); });
+  document.querySelectorAll('[data-guide-next]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); const i = steps.indexOf(a.dataset.guideNext);
+    if (i === 3 && !checks.every(c => c.checked)) { start(2); document.querySelector('.checks')?.animate?.([{ transform: 'translateX(0)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }], { duration: 300 }); return; }
+    start(i);
+  }));
+  btn.addEventListener('click', () => {
+    if (cur >= 3) { bar.hidden = true; active = false; return; }
+    cur += 1; render(); go(cur);
+  });
+  checks.forEach(c => c.addEventListener('change', render));
+  // 스크롤 위치에 맞춰 현재 단계 표시
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (active && e.isIntersecting) { const i = steps.indexOf(e.target.id); if (i >= 0) { cur = i; render(); } }
+    }), { rootMargin: '-40% 0px -50% 0px' });
+    steps.forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
+  }
+})();
+
+// ───── 모바일 메뉴 ─────
+(() => {
+  const b = document.getElementById('ln-menu'), sh = document.getElementById('ln-sheet');
+  if (!b || !sh) return;
+  const set = open => { sh.hidden = !open; b.setAttribute('aria-expanded', open); document.body.classList.toggle('menu-open', open); };
+  b.addEventListener('click', () => set(sh.hidden));
+  sh.querySelectorAll('a').forEach(a => a.addEventListener('click', () => set(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
 })();
