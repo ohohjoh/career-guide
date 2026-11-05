@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>경력확인서 발급 안내</title>
+<meta property="og:title" content="경력확인서 발급 안내">
+<meta property="og:description" content="외부 협회 제출용 경력확인서. 매월 첫째 주 수요일 마감, 그달 넷째 주 발급.">
+<meta property="og:url" content="https://ohohjoh.github.io/career-guide/">
+<meta property="og:image" content="https://ohohjoh.github.io/career-guide/static/preview.png">
+<meta property="og:site_name" content="KBS 인프라기획부">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<nav class="localnav" aria-label="페이지 메뉴">
+  <div class="ln-inner">
+    <a href="#top" class="ln-title" data-hyper-hover>경력확인서</a>
+    <div class="ln-links spy">
+      <a href="#schedule">일정</a><a href="#before">신청 전 확인</a><a href="#write">참여사업명</a><a href="#criteria">인정 기준</a><a href="#faq">질문</a>
+      <a href="#mail" class="ln-cta">신청 메일 만들기</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <p class="hero-org">KBS 인프라기획부</p>
+  <h1><span data-hyper>경력확인서는</span><br><span data-hyper>한 달에 한 번 발급합니다.</span></h1>
+  <p class="hero-sub">매월 첫째 주 수요일에 접수를 마감하고, 그달 넷째 주에 PDF로 드립니다.</p>
+  <div class="hero-actions"><a href="#mail" class="btn">신청 메일 만들기</a><a href="#schedule" class="link">이번 달 일정 보기</a></div>
+  <figure class="film">
+    <video id="film" autoplay muted loop playsinline preload="auto" poster="./static/flow_poster.jpg" aria-label="경력확인서 한 달의 흐름: 1주 신청 접수, 2주 작성본 발송, 3주 참여사업명 회신, 4주 직인과 발급">
+      <source src="./static/flow.webm" type="video/webm">
+      <source src="./static/flow.mp4" type="video/mp4">
+    </video>
+    <button type="button" class="film-toggle" id="film-toggle" aria-label="영상 일시정지"><span class="i-pause" aria-hidden="true"></span></button>
+  </figure>
+  <div class="hero-deadline">
+    <p>다음 접수 마감</p>
+    <p class="big deadline-long" data-hyper></p>
+    <p class="small">마감까지 <span class="dday"></span></p>
+  </div>
+</header>
+
+<section class="band band-gray" id="schedule">
+  <div class="inner">
+    <div class="sec-head"><h2 id="month-title" data-hyper-view>이번 달 일정</h2><p id="month-now" class="sec-sub"></p></div>
+    <div class="bento" data-reveal><article class="tile" data-week="1" style="--d:0">
+        <p class="t-no">1주</p><p class="t-date wk-date"></p><h3>신청 접수</h3><p class="t-desc">첫째 주 수요일 마감. 담당자가 인사운영부에 인사기록을 요청합니다.</p>
+        <p class="t-badge">이번 주</p></article><article class="tile" data-week="2" style="--d:1">
+        <p class="t-no">2주</p><p class="t-date wk-date"></p><h3>작성본 발송</h3><p class="t-desc">인사기록으로 근무경력을 채운 HWPX를 보냅니다.</p>
+        <p class="t-badge">이번 주</p></article><article class="tile" data-week="3" style="--d:2">
+        <p class="t-no">3주</p><p class="t-date wk-date"></p><h3>참여사업명 회신</h3><p class="t-desc">신청자가 작성해 회신합니다. 반려되면 같은 주 안에 수정합니다.</p>
+        <p class="t-badge">이번 주</p></article><article class="tile" data-week="4" style="--d:3">
+        <p class="t-no">4주</p><p class="t-date wk-date"></p><h3>확인, 직인, 발급</h3><p class="t-desc">인사운영부 확인과 총무부 직인을 거쳐 PDF로 발급합니다.</p>
+        <p class="t-badge">이번 주</p></article></div>
+    <p class="fine center">3주차 안에 회신하지 않거나 두 번 반려되면 다음 달로 넘어갑니다. 진행 상황 문의는 받지 않습니다.</p>
+  </div>
+</section>
+
+<section class="band" id="before">
+  <div class="inner narrow">
+    <h2>신청 전 확인</h2>
+    <dl class="spec"><div class="spec-row"><dt>다음 접수 마감</dt><dd><strong id="next-deadline"></strong></dd></div><div class="spec-row"><dt>발급 예정</dt><dd><span id="next-issue"></span></dd></div><div class="spec-row"><dt>대상 아님</dt><dd>한국산업인력공단(국가기술자격 응시자격 등), 협회 양식 없이 재직·부서·직급만 필요한 경우. 인사운영부 경력증명서로 발급받습니다. 문의 이지현(1411)</dd></div><div class="spec-row"><dt>신청 제한</dt><dd>같은 협회는 1년에 1회. 최근 발급일부터 1년 안에는 기존 발급본을 사용합니다. 여러 협회는 한 번에 신청합니다.</dd></div><div class="spec-row"><dt>접수 방법</dt><dd>KOBIS 메일만 받습니다. 전화 접수는 없습니다.</dd></div></dl>
+  </div>
+</section>
+
+<section class="band band-gray" id="prepare">
+  <div class="inner narrow">
+    <h2>준비물</h2>
+    <p class="sec-sub">네 항목을 모두 확인하면 신청 메일 양식이 열립니다.</p>
+    <ul class="checks"><li><label><input type="checkbox" class="pre"><span class="box" aria-hidden="true"></span><span class="txt">제출 협회, 용도, 협회 제출 기한을 정했고 대상 아님·신청 제한에 해당하지 않음</span></label></li><li><label><input type="checkbox" class="pre"><span class="box" aria-hidden="true"></span><span class="txt">협회 경력확인서 양식을 <strong>HWPX</strong>로 저장하고 인적사항만 기재함. 근무경력 표는 비워 둠</span></label></li><li><label><input type="checkbox" class="pre"><span class="box" aria-hidden="true"></span><span class="txt">공사감독을 넣는 경우, 사업부서(송신시설부, 제작시설부, 시설구축부 등) 근무기간은 사업명과 금액을, 그 외 부서는 <strong>KOBIS 문서번호</strong>까지 정리함</span></label></li><li><label><input type="checkbox" class="pre"><span class="box" aria-hidden="true"></span><span class="txt">근무기간, 부서, 직위, 담당업무는 인사기록 기준으로 작성되며 바꿀 수 없음</span></label></li></ul>
+    <details class="assoc"><summary>협회 홈페이지</summary><ul><li><a href="https://www.kica.or.kr/" target="_blank" rel="noopener">한국정보통신공사협회</a></li><li><a href="https://www.keca.or.kr/" target="_blank" rel="noopener">한국전기공사협회</a></li><li><a href="https://www.kpea.or.kr/" target="_blank" rel="noopener">한국기술사회</a></li><li><a href="http://www.kenca.or.kr/main/index.jsp" target="_blank" rel="noopener">한국엔지니어링협회</a></li><li><a href="https://homenet.kocea.or.kr:1443/kocea/koc-kr/index.do" target="_blank" rel="noopener">한국건설기술인협회</a></li><li><a href="https://www.kmcca.or.kr/main.do" target="_blank" rel="noopener">대한기계설비건설협회</a></li><li><a href="https://www.kisa.or.kr/" target="_blank" rel="noopener">한국인터넷진흥원 (ISMS-P)</a></li><li><a href="https://www.koita.or.kr/" target="_blank" rel="noopener">한국산업기술진흥협회</a></li></ul></details>
+  </div>
+</section>
+
+<section class="band" id="mail">
+  <div class="inner narrow">
+    <h2>신청 메일</h2>
+    <p class="sec-sub">칸을 채우면 제목과 본문이 만들어집니다. KOBIS 메일로 보냅니다.</p>
+    <div class="panel-white"><p id="mail-locked" class="locked">준비물 네 항목을 모두 확인하면 열립니다. <strong id="check-count">0</strong>/4</p>
+<div id="mail-builder" hidden>
+<div class="fields">
+  <label>성명<input id="f-name" type="text" autocomplete="off"></label>
+  <label>사번<input id="f-empno" type="text" inputmode="numeric" autocomplete="off"></label>
+  <label>재직 구분<select id="f-status"><option>재직</option><option>퇴직</option><option>재고용(연봉직)</option></select></label>
+  <label>제출 협회<select id="f-assoc"><option>한국정보통신공사협회</option><option>한국전기공사협회</option><option>한국전기기술인협회</option><option>한국기술사회</option><option>한국엔지니어링협회</option><option>한국건설기술인협회</option><option>대한기계설비건설협회</option><option>한국인터넷진흥원(ISMS-P)</option><option>한국산업기술진흥협회</option><option>기타</option></select></label>
+  <label>용도<input id="f-purpose" type="text" placeholder="정보통신기술자 등급 상향"></label>
+  <label>협회 제출 기한<input id="f-due" type="date"></label>
+  <label class="wide">공사감독<select id="f-works"><option value="no">없음</option><option value="yes">있음</option></select></label>
+  <label class="wide" id="works-wrap" hidden>공사감독 사업<small>한 줄에 한 건. 기간 / 사업명 / 금액 / KOBIS 문서번호(사업부서 외 필수)</small>
+    <textarea id="f-worklist" rows="4" placeholder="2023.03.~2023.11. / ○○송신소 UHD 송신시설 구축공사 / 6.2억 / 송신플랫폼국-2023-000123"></textarea></label>
+</div>
+<div class="mailout">
+  <div class="mo-row"><span class="mo-k">받는 사람</span><span id="out-to" class="mo-v"></span></div>
+  <div class="mo-row"><span class="mo-k">제목</span><span id="out-subject" class="mo-v"></span><button type="button" class="copy" data-copy="out-subject">복사</button></div>
+  <div class="mo-row mo-body"><span class="mo-k">본문</span><pre id="out-body" class="mo-v"></pre><button type="button" class="copy" data-copy="out-body">복사</button></div>
+  <div class="mo-row"><span class="mo-k">첨부</span><span class="mo-v">협회 경력확인서 양식 (HWPX, 인적사항만 기재)</span></div>
+</div>
+<p id="form-warn" class="warn" hidden></p>
+<p class="fine">본문은 고치지 말고 그대로 보냅니다. 입력한 내용은 이 화면에서만 쓰이며 저장되지 않습니다.</p>
+</div></div>
+  </div>
+</section>
+
+<section class="band band-gray" id="write">
+  <div class="inner">
+    <div class="sec-head"><h2>참여사업명 작성</h2><p class="sec-sub">둘째 주에 받은 작성본에서 참여사업명 칸만 채워 셋째 주 안에 회신합니다. 다른 칸을 고치면 반려합니다.</p></div>
+    <div class="duo">
+      <article class="tile tall"><h3>유지관리</h3><p class="t-desc">담당 시설과 한 일. 운영, 운용, 운행, 점검, 유지보수 모두 씁니다. 구축, 감독, 설계, 공사, 시공, 감리는 쓰지 않습니다.</p><ul class="ex ex-ok"><li>관악산송신소 TV·FM 송신시설 운영 및 유지관리</li><li>주조정실 방송장비 점검 및 운용</li><li>라디오 주조정실 송출 운행 및 장비 관리</li><li>제작편집실 디지털 편집장비 유지보수</li><li>중계소 송신설비 정기점검 및 장애 복구</li><li>TV 중계차 장비 운용 및 정비</li><li>간이TVR 중계기 순회 점검</li><li>스튜디오 조명·음향 설비 유지관리</li></ul><p class="ex-head">반려되는 예</p><ul class="ex ex-no"><li><span>UHD 송신시설 구축</span><em>구축</em></li><li><span>송신기 교체공사 감독</span><em>공사, 감독</em></li><li><span>원격제어 시스템 설계</span><em>설계</em></li><li><span>방송시설 유지관리 및 공사감독</span><em>감독</em></li><li><span>주조정실 이전공사 시공</span><em>공사, 시공</em></li><li><span>디지털 전환 사업 감리</span><em>감리</em></li></ul></article>
+      <article class="tile tall"><h3>공사감독, 설계</h3><p class="t-desc">참여한 사업명과 금액. 신청 메일에 적은 사업만 씁니다. 설계는 정보통신기술자만 해당합니다.</p><ul class="ex ex-ok"><li>○○송신소 UHD 송신시설 구축공사 (6.2억)</li><li>노후 FM 송신기 11식 교체공사 (5.2억)</li><li>제작편집실 3·C 디지털화 공사 (1.1억)</li><li>전주총국 신사옥 TV 시설공사 (11.3억)</li><li>TV 디지털분배망 확장 2차공사 설계 (3.8억)</li></ul><p class="ex-head">반려되는 예</p><ul class="ex ex-no"><li><span>방송시설 유지관리</span><em>사업명 아님</em></li><li><span>송신소 업무 전반</span><em>사업명 아님</em></li><li><span>각종 시설공사 감독</span><em>사업 불명확</em></li><li><span>신청 메일에 없던 사업</span><em>추가 불가</em></li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="criteria">
+  <div class="inner narrow">
+    <h2>인정 기준</h2>
+    <p class="sec-sub">근무기간, 부서, 직위, 담당업무는 인사기록(발령사항)을 기준으로 담당자가 작성합니다.</p>
+    <dl class="spec"><div class="spec-row"><dt>유지관리</dt><dd>방송시설 유지보수, 점검, 방송 운용·운행 업무</dd></div><div class="spec-row"><dt>공사감독 (사업부서)</dt><dd>송신시설부, 제작시설부, 시설구축부 등 사업부서 근무기간의 공사</dd></div><div class="spec-row"><dt>공사감독 (그 외 부서)</dt><dd>KOBIS 상신 문서로 확인되는 사업만</dd></div><div class="spec-row"><dt>설계</dt><dd>정보통신기술자 자격과 공사감독 경력이 있고 KOBIS 문서로 확인되는 사업</dd></div><div class="spec-row neg"><dt>인정 안 함</dt><dd>노동조합·감사·공통직군 부서 근무, 입사 연수 기간, 휴직 기간, 내부 지정 감리, 사업부서 외 부서의 KOBIS 문서 없는 공사감독</dd></div></dl>
+    <ul class="notes"><li>지역 근무는 유지관리만 인정합니다. 본인이 기안한 KOBIS 사업시행 문서가 있는 사업은 예외입니다.</li><li>전기 경력은 전력운영부 확인이 필요하며 송신소 근무만 인정합니다.</li><li>부서명은 인사기록의 공식 명칭을 씁니다. 공식 직제에 없는 근무지는 인정하지 않습니다.</li><li>직급은 사내 기준(직원, 차장급, 부장급, 보직명)으로 쓰며 재직·퇴직 여부에 따라 달라집니다. 변경 요청은 받지 않습니다.</li><li>퇴직 후 재고용 기간은 '사원'으로 쓰고 재계약마다 기간을 나눕니다.</li><li>대한기계설비건설협회 양식은 송신소·중계소 주소를 정확히 적어야 합니다.</li></ul>
+  </div>
+</section>
+
+<section class="band band-gray" id="faq">
+  <div class="inner narrow"><h2>자주 묻는 질문</h2><div class="faq"><details><summary>급하게 필요합니다.</summary><p>급행은 없습니다. 마감한 달 넷째 주에 발급되므로 협회 제출 기한이 그 이후일 때 신청합니다.</p></details><details><summary>1년 안에 같은 협회에 다시 내야 합니다.</summary><p>재신청할 수 없습니다. 기존 발급본을 사용합니다.</p></details><details><summary>한국산업인력공단에 낼 경력은요?</summary><p>경력확인서 대상이 아닙니다. 인사운영부에서 경력증명서를 받습니다.</p></details><details><summary>근무경력 표를 직접 써서 보내도 됩니까?</summary><p>안 됩니다. 근무경력은 인사기록으로 작성하고, 신청자는 참여사업명만 씁니다.</p></details><details><summary>부장(팀장) 보직을 했는데 차장급으로 나옵니다.</summary><p>보직이 끝난 뒤 기간은 직급, 보직 경력, 근무지, 재직·퇴직 여부에 따라 사내 기준으로 씁니다. 지역에서 부장 보직 후 퇴직했다면 차장급입니다.</p></details><details><summary>방송 운용·운행 업무도 인정됩니까?</summary><p>인정합니다. 담당업무는 유지관리로 쓰고 참여사업명에 실제로 한 일을 씁니다.</p></details><details><summary>사업부서가 아닌 곳에서 한 공사감독은요?</summary><p>KOBIS 상신 문서가 있는 사업만 인정합니다. 신청 메일에 문서번호를 적습니다.</p></details><details><summary>경력이 입사일부터 시작하지 않습니다.</summary><p>입사 연수 기간은 빠집니다. 첫 근무지 발령일부터 씁니다.</p></details><details><summary>hwp나 PDF로 보내도 됩니까?</summary><p>안 됩니다. 한글에서 다른 이름으로 저장할 때 파일 형식을 HWPX로 고릅니다.</p></details></div></div>
+</section>
+
+<footer class="foot"><div class="inner narrow">
+  <p>KBS 인프라기획부 경력확인서 담당 오종원. 접수와 문의는 KOBIS 메일로 받습니다.</p>
+  <p>경력증명서는 인사운영부 이지현(1411)</p>
+</div></footer>
+<script src="./script.js"></script>
+</body>
+</html>
