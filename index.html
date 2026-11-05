@@ -10,7 +10,7 @@
 <meta property="og:image" content="https://ohohjoh.github.io/career-guide/static/preview.png">
 <meta property="og:site_name" content="KBS 인프라기획부">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./style.css?v=20261105b">
 </head>
 <body>
 <nav class="localnav" aria-label="페이지 메뉴">
@@ -35,11 +35,11 @@
 <header class="hero" id="top">
   <p class="hero-org">KBS 인프라기획부</p>
   <h1><span data-hyper>경력확인서 발급 가이드</span></h1>
-  <p class="hero-sub">매월 첫째 주 일요일까지 접수를 마감하고, 마지막 주(넷째 주)에 PDF로 드립니다.<br><strong>일정 및 신청 방법을 반드시 숙지하고 신청 바랍니다.</strong></p>
+  <p class="hero-sub"><span class="l">매월 첫째 주 일요일까지 접수를 마감하고, 마지막 주(넷째 주)에 PDF로 드립니다.</span><strong class="l">일정 및 신청 방법을 반드시 숙지하고 신청 바랍니다.</strong></p>
   <figure class="film">
-    <video id="film" autoplay muted loop playsinline preload="auto" poster="./static/flow_poster.jpg" aria-label="경력확인서 한 달의 흐름: 1주 신청 접수, 2주 인사기록 반영본 발송, 3주 참여사업명 회신, 4주 검토와 직인 후 송부">
-      <source src="./static/flow.webm" type="video/webm">
-      <source src="./static/flow.mp4" type="video/mp4">
+    <video id="film" autoplay muted loop playsinline preload="auto" poster="./static/flow_poster.jpg?v=20261105b" aria-label="경력확인서 한 달의 흐름: 1주 신청 접수, 2주 인사기록 반영본 발송, 3주 참여사업명 회신, 4주 검토와 직인 후 송부">
+      <source src="./static/flow.webm?v=20261105b" type="video/webm">
+      <source src="./static/flow.mp4?v=20261105b" type="video/mp4">
     </video>
     <button type="button" class="film-toggle" id="film-toggle" aria-label="영상 일시정지"><span class="i-pause" aria-hidden="true"></span></button>
   </figure>
@@ -151,8 +151,8 @@
     <div class="sec-head"><h2>작성 예시</h2><p class="sec-sub">회색 칸은 담당자가 인사기록으로 채워 보냅니다. <strong class="mine-label">파란 칸</strong>만 신청자가 씁니다.</p></div>
     <div class="ex-table-wrap">
       <table class="ex-table">
-        <thead><tr><th>근무기간</th><th>근무부서</th><th>직위</th><th>담당업무</th><th class="mine">참여사업명</th></tr></thead>
-        <tbody><tr><td>2012.03.01. ~ 2015.02.28.</td><td>○○방송국 기술부</td><td>직원</td><td>유지관리</td><td class="mine">○○송신소 TV·FM 송신시설 운영 및 유지관리</td></tr><tr><td>2015.03.01. ~ 2019.12.31.</td><td>기술본부 제작시설부</td><td>차장급</td><td>공사감독</td><td class="mine">○○송신소 UHD 송신시설 구축공사 (6.2억)<br>노후 FM 송신기 교체공사</td></tr><tr><td>2020.01.01. ~ 2023.06.30.</td><td>기술본부 방송네트워크국 ○○송신소</td><td>팀장</td><td>유지관리</td><td class="mine">송신설비 정기점검 및 장애 복구</td></tr><tr><td>2023.07.01. ~ 현재</td><td>방송인프라본부 송신플랫폼국 ○○송신소</td><td>차장급</td><td>유지관리</td><td class="mine">TV·FM 송신시설 운영 및 유지관리</td></tr></tbody>
+        <thead><tr><th class="c-period">근무기간</th><th>근무부서</th><th class="nw">직위</th><th class="nw">담당업무</th><th class="mine">참여사업명</th></tr></thead>
+        <tbody><tr><td data-label="근무기간">2012.03.01. ~ 2015.02.28.</td><td data-label="근무부서">○○방송국 기술부</td><td data-label="직위" class="nw">직원</td><td data-label="담당업무" class="nw">유지관리</td><td data-label="참여사업명" class="mine">○○송신소 TV·FM 송신시설 운영 및 유지관리</td></tr><tr><td data-label="근무기간">2015.03.01. ~ 2019.12.31.</td><td data-label="근무부서">기술본부 제작시설부</td><td data-label="직위" class="nw">차장급</td><td data-label="담당업무" class="nw">공사감독</td><td data-label="참여사업명" class="mine">○○송신소 UHD 송신시설 구축공사 (6.2억)<br>노후 FM 송신기 교체공사</td></tr><tr><td data-label="근무기간">2020.01.01. ~ 2023.06.30.</td><td data-label="근무부서">기술본부 방송네트워크국 ○○송신소</td><td data-label="직위" class="nw">팀장</td><td data-label="담당업무" class="nw">유지관리</td><td data-label="참여사업명" class="mine">송신설비 정기점검 및 장애 복구</td></tr><tr><td data-label="근무기간">2023.07.01. ~ 현재</td><td data-label="근무부서">방송인프라본부 송신플랫폼국 ○○송신소</td><td data-label="직위" class="nw">차장급</td><td data-label="담당업무" class="nw">유지관리</td><td data-label="참여사업명" class="mine">TV·FM 송신시설 운영 및 유지관리</td></tr></tbody>
       </table>
     </div>
     <p class="fine">예시의 부서와 사업은 실제와 관계없습니다.</p>
@@ -168,6 +168,6 @@
   <ol><li data-guide="schedule"><span class="g-no">1</span>일정</li><li data-guide="before"><span class="g-no">2</span>신청 전 확인</li><li data-guide="prepare"><span class="g-no">3</span>준비물</li><li data-guide="mail"><span class="g-no">4</span>신청 메일</li></ol>
   <button type="button" class="guide-next" id="guide-next">다음 단계</button>
 </div>
-<script src="./script.js"></script>
+<script src="./script.js?v=20261105b"></script>
 </body>
 </html>
