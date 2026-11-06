@@ -52,7 +52,7 @@ ul.plain li{margin:4px 0}
 </style>
 </head>
 <body>
-<div class="note">[검토용 예시] 2주차에 신청자에게 보내는 메일 모습입니다. 이름·사번·경력은 가상입니다.<a href="./">← 신청 화면</a></div>
+<div class="note">[검토용 예시] 매월 20일까지 신청자에게 보내는 메일 모습입니다. 이름·사번·경력은 가상입니다.<a href="./">← 신청 화면</a></div>
 <div class="wrap"><div class="mail">
   <div class="mh">
     <h1 id="subj"></h1>
@@ -105,7 +105,7 @@ ul.plain li{margin:4px 0}
       <tr><td class="nw">유지관리</td><td>○○송신소 TV·FM 송신시설 운영 및 유지관리<br>주조정실 방송장비 점검 및 운용</td><td>UHD 송신시설 <b>구축</b><br>송신기 교체<b>공사 감독</b></td></tr>
       <tr><td class="nw">공사감독</td><td>○○송신소 UHD 송신시설 구축공사 (6.2억)</td><td>방송시설 유지관리<br>신청 메일에 없던 사업</td></tr>
     </table>
-    <p class="legend">작성한 참여사업명은 신청 페이지의 "참여사업명 검사"에 붙여넣어 미리 확인할 수 있습니다.</p>
+    <p class="legend">유지관리 칸에 <b>구축·감독·설계·공사·시공·감리</b>가 한 글자라도 들어가면 반려합니다. "설치·이설·교체"는 유지보수 업무일 때만 씁니다.</p>
 
     <h3>회신 방법</h3>
     <ul class="plain">
@@ -124,16 +124,14 @@ ul.plain li{margin:4px 0}
   </div>
 </div></div>
 <script>
-const WD = '일월화수목금토', add = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
-const deadlineOf = (y, m) => { const f = new Date(y, m, 1); return add(f, (3 - f.getDay() + 7) % 7 + 4); };
-const t = new Date(); const td = new Date(t.getFullYear(), t.getMonth(), t.getDate());
-let d = deadlineOf(td.getFullYear(), td.getMonth()); if (td > d) d = deadlineOf(td.getFullYear(), td.getMonth() + 1);
-const mon = add(d, -6), reply = add(mon, 20), i0 = add(mon, 21), i1 = add(mon, 27);
-const kd = x => `${x.getMonth() + 1}월 ${x.getDate()}일(${WD[x.getDay()]})`, sd = x => `${x.getMonth() + 1}.${x.getDate()}.`;
+const WD = '일월화수목금토', q = new URLSearchParams(location.search).get('date');
+const t = q ? new Date(q + 'T00:00') : new Date(), y = t.getFullYear(), m = t.getMonth() + (t.getDate() <= 10 ? 0 : 1);
+const reply = new Date(y, m, 25), issue = new Date(y, m + 1, 0);
+const kd = x => `${x.getMonth() + 1}월 ${x.getDate()}일(${WD[x.getDay()]})`;
 document.getElementById('subj').textContent = `[경력확인서] 경력 정리표 송부 및 초안 작성 요청 (${kd(reply)}까지 회신)`;
 document.getElementById('reply-by').textContent = kd(reply);
 document.getElementById('reply-by2').textContent = `${kd(reply)} 24시`;
-document.getElementById('issue').textContent = `${d.getMonth() + 1}월 마지막 주(${sd(i0)} ~ ${sd(i1)})`;
+document.getElementById('issue').textContent = `${kd(issue)}까지`;
 </script>
 </body>
 </html>
