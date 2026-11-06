@@ -1,0 +1,27 @@
+name: 마감일 이미지 갱신
+on:
+  schedule:
+    - cron: "1 15 * * *"      # 매일 00:01 KST
+  workflow_dispatch:
+  push:
+    paths: ["tools/deadline.py"]
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pillow
+      - run: python tools/deadline.py
+      - name: 바뀐 경우만 커밋
+        run: |
+          git add static/deadline.json
+          if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
+          git add static/deadline.png
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "마감일 갱신: $(python -c 'import json;print(json.load(open("static/deadline.json"))["label"])')"
+          git push
