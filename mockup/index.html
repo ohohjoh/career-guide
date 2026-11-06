@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>경력확인서 신청</title>
+<meta name="description" content="KBS 경력확인서 신청 · 버튼만 누르면 신청 메일이 만들어집니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--ink2:#6e6e73;--ink3:#86868b;--line:#e8e8ed;--blue:#0071e3;--blue-bg:#eaf3ff;--red:#e3262b;--red-bg:#fdecec;--green:#1a8f3c;--green-bg:#e8f6ec;--amber:#b25e00;--amber-bg:#fff4e0}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;word-break:keep-all;overflow-wrap:break-word;-webkit-text-size-adjust:100%}
+body{min-height:100vh;min-height:100dvh;display:flex;justify-content:center}
+.app{width:100%;max-width:560px;padding:20px 20px calc(28px + env(safe-area-inset-bottom));display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.top{display:flex;align-items:center;justify-content:space-between;height:44px;margin-bottom:8px}
+.brand{font-size:15px;font-weight:700;letter-spacing:-.02em}
+.brand small{display:block;font-size:12px;font-weight:600;color:var(--ink3)}
+.back{border:0;background:none;font-size:17px;font-weight:600;color:var(--blue);padding:8px 0}
+.home-link{border:0;background:none;font-size:15px;font-weight:600;color:var(--ink3);padding:8px 0}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin:4px 0 28px}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:3px;transition:width .35s ease}
+.screen{flex:1;display:flex;flex-direction:column;min-width:0;animation:in .28s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h1{font-size:30px;line-height:1.3;letter-spacing:-.03em;margin:0 0 8px;font-weight:800}
+.sub{font-size:17px;line-height:1.5;color:var(--ink2);margin:0 0 24px}
+.choices{display:grid;gap:12px}
+.choice{display:flex;align-items:center;gap:14px;width:100%;min-height:68px;padding:16px 20px;border:2px solid var(--line);border-radius:18px;background:var(--card);font-size:20px;font-weight:700;text-align:left;letter-spacing:-.02em;transition:border-color .15s,transform .1s}
+.choice:hover{border-color:#c7c7cc}.choice:active{transform:scale(.98)}
+.choice small{display:block;font-size:14px;font-weight:500;color:var(--ink3);margin-top:2px}
+.choice .ic{flex:0 0 auto;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:var(--bg)}
+.choice.big{min-height:96px;font-size:23px}
+.two{grid-template-columns:1fr 1fr}.two .choice{justify-content:center;text-align:center;min-height:110px;font-size:28px;flex-direction:column;gap:4px}
+.two .choice span.e{font-size:36px}
+.field{display:block;margin-bottom:18px}
+.field b{display:block;font-size:16px;margin-bottom:8px}
+.field input,.field textarea{width:100%;font:inherit;font-size:22px;font-weight:600;padding:16px 18px;border:2px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink);outline:none;letter-spacing:-.01em}
+.field textarea{font-size:18px;font-weight:500;line-height:1.55;min-height:150px;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:var(--blue)}
+.field input::placeholder,.field textarea::placeholder{color:#c7c7cc;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:-6px 0 18px}
+.chip{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:9px 14px;font-size:15px;font-weight:600}
+.chip:active{background:var(--bg)}
+.spacer{flex:1;min-height:24px}
+.next{width:100%;min-height:64px;border:0;border-radius:18px;background:var(--blue);color:#fff;font-size:20px;font-weight:700;letter-spacing:-.02em}
+.next:disabled{background:#d2d2d7;cursor:not-allowed}
+.next.dark{background:var(--ink)}
+.hint{font-size:15px;color:var(--red);font-weight:600;margin:-6px 0 14px;min-height:20px}
+/* 홈 */
+.hero{background:var(--card);border-radius:24px;padding:28px 24px 24px;text-align:center;margin-bottom:16px}
+.hero .lbl{font-size:16px;font-weight:700;color:var(--ink2)}
+.hero .date{font-size:52px;line-height:1.1;font-weight:800;color:var(--red);letter-spacing:-.04em;margin:8px 0 12px}
+.hero .when{font-size:16px;line-height:1.55;color:var(--ink2);margin:0}
+.hero .when b{color:var(--ink)}
+.home-btn{display:flex;align-items:center;gap:16px;width:100%;padding:22px 22px;border:0;border-radius:22px;background:var(--card);text-align:left;margin-bottom:12px;position:relative;transition:transform .1s}
+.home-btn:active{transform:scale(.98)}
+.home-btn .n{flex:0 0 auto;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:22px;font-weight:800;background:var(--bg);color:var(--ink)}
+.home-btn .t{font-size:24px;font-weight:800;letter-spacing:-.03em;line-height:1.25}
+.home-btn .t small{display:block;font-size:15px;font-weight:500;color:var(--ink3);margin-top:3px;letter-spacing:-.01em}
+.home-btn .arr{margin-left:auto;font-size:26px;color:var(--ink3)}
+.home-btn.on{background:var(--blue);color:#fff}
+.home-btn.on .n{background:rgba(255,255,255,.2);color:#fff}.home-btn.on small,.home-btn.on .arr{color:rgba(255,255,255,.8)}
+.badge{position:absolute;top:-8px;right:16px;background:var(--red);color:#fff;font-size:13px;font-weight:800;padding:4px 10px;border-radius:999px}
+.more{display:block;text-align:center;margin:18px 0 0;font-size:16px;font-weight:600;color:var(--ink2);text-decoration:none;padding:10px}
+.more:hover{color:var(--ink)}
+.foot{margin-top:auto;padding-top:24px;text-align:center;font-size:13px;color:var(--ink3);line-height:1.6}
+/* 멈춤 */
+.stop{text-align:center;padding-top:24px}
+.stop .e{width:64px;height:64px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:38px;font-weight:900;line-height:1;margin:0 auto 20px}
+.stop h1{font-size:28px}
+.stop .sub{font-size:18px}
+.stop .box{background:var(--card);border-radius:18px;padding:18px 20px;font-size:18px;font-weight:700;margin:0 0 24px}
+/* 공사감독 */
+.work{background:var(--card);border-radius:18px;padding:16px;margin-bottom:12px;border:2px solid var(--line)}
+.work .row{display:grid;grid-template-columns:1fr;gap:8px}
+.work input{width:100%;font:inherit;font-size:17px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;outline:none}
+.work input:focus{border-color:var(--blue)}
+.work .lab{font-size:13px;font-weight:700;color:var(--ink3);margin:2px 0 -4px}
+.work .del{border:0;background:none;color:var(--red);font-size:14px;font-weight:700;float:right;padding:0}
+.add{width:100%;border:2px dashed #c7c7cc;border-radius:18px;background:none;padding:16px;font-size:17px;font-weight:700;color:var(--blue);margin-bottom:16px}
+/* 완료 */
+.steps{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-bottom:20px}
+.cp{display:flex;align-items:center;gap:14px;width:100%;min-width:0;padding:18px 18px;border:2px solid var(--line);border-radius:18px;background:var(--card);text-align:left}
+.cp .n{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px}
+.cp .t{flex:1;min-width:0}
+.cp .t b{display:block;font-size:19px;letter-spacing:-.02em}
+.cp .t span{display:block;font-size:14px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.cp .go{flex:0 0 auto;font-size:15px;font-weight:800;color:var(--blue);background:var(--blue-bg);padding:9px 14px;border-radius:999px}
+.cp.done{border-color:var(--green);background:var(--green-bg)}.cp.done .n{background:var(--green)}.cp.done .go{background:var(--green);color:#fff}
+.preview{background:var(--card);border-radius:18px;padding:16px 18px;font-size:15px;line-height:1.65;white-space:pre-wrap;color:var(--ink2);margin:0 0 16px;border:1px solid var(--line)}
+details.pv summary{font-size:15px;font-weight:700;color:var(--ink2);cursor:pointer;margin-bottom:10px}
+.after{background:var(--blue-bg);border-radius:18px;padding:16px 18px;font-size:16px;line-height:1.6;margin-bottom:16px}
+.after b{color:var(--blue)}
+/* 참여사업명 */
+.seg{display:grid;grid-template-columns:1fr 1fr;background:#e3e3e8;border-radius:16px;padding:4px;margin-bottom:18px}
+.seg button{border:0;background:none;border-radius:12px;padding:14px 8px;font-size:18px;font-weight:700;color:var(--ink2)}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.result{border-radius:18px;padding:18px 20px;font-size:18px;font-weight:700;line-height:1.5;margin-bottom:16px}
+.result.ok{background:var(--green-bg);color:var(--green)}.result.ng{background:var(--red-bg);color:var(--red)}.result.warn{background:var(--amber-bg);color:var(--amber)}.result.idle{background:var(--card);color:var(--ink3);font-weight:600}
+.result .lines{margin-top:10px;font-size:16px;font-weight:500;color:var(--ink);line-height:1.7}
+.result mark{background:var(--red);color:#fff;border-radius:4px;padding:0 3px}
+.result mark.w{background:#ffb340;color:var(--ink)}
+.ox{display:grid;gap:10px;margin-bottom:12px}
+.ox div{background:var(--card);border-radius:16px;padding:14px 16px;font-size:16px;line-height:1.5;display:flex;gap:12px;align-items:flex-start}
+.ox i{font-style:normal;font-weight:900;font-size:20px;line-height:1.2;flex:0 0 22px}
+.ox .o i{color:var(--green)}.ox .x i{color:var(--red)}
+.ox .x s{color:var(--ink2);text-decoration-color:rgba(227,38,43,.6)}
+.ox em{font-style:normal;font-size:13px;font-weight:700;color:var(--red);margin-left:6px}
+.label{font-size:15px;font-weight:800;color:var(--ink2);margin:22px 0 10px}
+.rule{background:var(--card);border-radius:16px;padding:14px 16px;font-size:16px;font-weight:700;margin-bottom:16px;line-height:1.5}
+.rule b{color:var(--red)}
+.toast{position:fixed;left:50%;top:calc(16px + env(safe-area-inset-top));transform:translate(-50%,-20px);background:var(--ink);color:#fff;font-size:16px;font-weight:700;padding:12px 20px;border-radius:999px;opacity:0;transition:.25s;pointer-events:none;z-index:9}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (min-width:700px){.app{padding-top:48px}h1{font-size:34px}.hero .date{font-size:60px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="top">
+    <button class="back" id="back" hidden>‹ 이전</button>
+    <div class="brand" id="brand">경력확인서<small>KBS 인프라기획부</small></div>
+    <button class="home-link" id="home" hidden>처음으로</button>
+  </div>
+  <div class="bar" id="bar" hidden><i id="bar-i"></i></div>
+
+  <!-- 홈 -->
+  <section class="screen" data-s="home">
+    <div class="hero">
+      <div class="lbl">다음 접수 마감</div>
+      <div class="date" id="h-date">—</div>
+      <p class="when" id="h-when"></p>
+    </div>
+    <button class="home-btn on" data-go="assoc" id="btn-apply">
+      <span class="n">1</span><span class="t">신청하기<small>질문에 답하면 신청 메일이 작성됩니다</small></span><span class="arr">›</span>
+    </button>
+    <button class="home-btn" data-go="write" id="btn-write">
+      <span class="n">2</span><span class="t">참여사업명 쓰기<small>작성본 파일을 받은 신청자만 해당</small></span><span class="arr">›</span>
+    </button>
+    <a class="more" href="../">일정·인정 기준·자주 묻는 질문 ›</a>
+    <p class="foot">경력증명서는 인사운영부 이지현(1411)<br>경력확인서 인프라기획부 오종원</p>
+  </section>
+
+  <!-- 1. 협회 -->
+  <section class="screen" data-s="assoc" data-step="1" hidden>
+    <h1>제출할 협회는 어디입니까?</h1>
+    <p class="sub">하나를 선택하십시오.</p>
+    <div class="choices" id="assoc-list"></div>
+    <div id="assoc-etc" hidden>
+      <label class="field" style="margin-top:16px"><b>협회명</b><input id="f-assoc-etc" placeholder="예: 한국○○협회"></label>
+      <button class="next" id="assoc-etc-next" disabled>다음</button>
+    </div>
+  </section>
+
+  <!-- 2. 1년 이내 -->
+  <section class="screen" data-s="recent" data-step="2" hidden>
+    <h1>최근 1년 안에 <span id="q-assoc-name"></span> 제출용 경력확인서를 발급받았습니까?</h1>
+    <p class="sub">같은 협회는 1년에 1회만 발급합니다.</p>
+    <div class="choices two">
+      <button class="choice" data-go="stop-recent">예</button>
+      <button class="choice" data-go="name">아니요</button>
+    </div>
+  </section>
+
+  <!-- 3. 이름·사번 -->
+  <section class="screen" data-s="name" data-step="3" hidden>
+    <h1>성명과 사번을 입력하십시오.</h1>
+    <p class="sub">신청자 본인의 정보를 입력합니다.</p>
+    <label class="field"><b>성명</b><input id="f-name" autocomplete="name" placeholder="홍길동"></label>
+    <label class="field"><b>사번</b><input id="f-empno" inputmode="numeric" maxlength="8" placeholder="12345"></label>
+    <div class="spacer"></div>
+    <button class="next" id="name-next" disabled>다음</button>
+  </section>
+
+  <!-- 4. 재직 -->
+  <section class="screen" data-s="status" data-step="4" hidden>
+    <h1>현재 재직 중입니까?</h1>
+    <p class="sub">하나를 선택하십시오.</p>
+    <div class="choices two">
+      <button class="choice" data-status="재직">재직</button>
+      <button class="choice" data-status="퇴직">퇴직</button>
+    </div>
+  </section>
+
+  <!-- 5. 용도 -->
+  <section class="screen" data-s="purpose" data-step="5" hidden>
+    <h1>용도는 무엇입니까?</h1>
+    <p class="sub">협회 제출 목적을 입력하십시오.</p>
+    <label class="field"><b>용도</b><input id="f-purpose" placeholder="예: 기술자 등급 상향"></label>
+    <div class="chips">
+      <button class="chip" data-fill="기술자 경력 신고">경력 신고</button>
+      <button class="chip" data-fill="기술자 등급 상향">등급 상향</button>
+      <button class="chip" data-fill="경력수첩 발급">경력수첩 발급</button>
+      <button class="chip" data-fill="자격 응시">자격 응시</button>
+    </div>
+    <div class="spacer"></div>
+    <button class="next" id="purpose-next" disabled>다음</button>
+  </section>
+
+  <!-- 6. 제출 기한 -->
+  <section class="screen" data-s="due" data-step="6" hidden>
+    <h1>협회 제출 기한은 언제입니까?</h1>
+    <p class="sub">기한이 없으면 <b>“기한 없음”</b>을 누르십시오.</p>
+    <label class="field"><b>제출 기한</b><input id="f-due" type="date"></label>
+    <div class="chips"><button class="chip" id="due-none">기한 없음</button></div>
+    <div class="spacer"></div>
+    <button class="next" id="due-next" disabled>다음</button>
+  </section>
+
+  <!-- 7. 공사감독 -->
+  <section class="screen" data-s="works" data-step="7" hidden>
+    <h1>공사감독 경력이 있습니까?</h1>
+    <p class="sub">공사·사업을 직접 감독한 경우에만 “예”를 누르십시오.</p>
+    <div class="choices two">
+      <button class="choice" data-go="worklist">예</button>
+      <button class="choice" id="works-no">아니요<small>유지관리·운용만</small></button>
+    </div>
+  </section>
+
+  <!-- 7-1. 공사감독 목록 -->
+  <section class="screen" data-s="worklist" data-step="7" hidden>
+    <h1>감독한 사업을 입력하십시오.</h1>
+    <p class="sub">사업마다 한 칸씩 입력합니다. 여기에 없는 사업은 추가할 수 없습니다.</p>
+    <div class="rule">사업부서(송신시설부·제작시설부·시설구축부) 밖에서 한 사업은 <b>KOBIS 문서번호가 없으면 인정하지 않습니다.</b></div>
+    <div id="work-rows"></div>
+    <button class="add" id="work-add">+ 사업 하나 더</button>
+    <p class="hint" id="work-hint"></p>
+    <div class="spacer"></div>
+    <button class="next" id="work-next" disabled>다음</button>
+  </section>
+
+  <!-- 완료 -->
+  <section class="screen" data-s="done" hidden>
+    <h1>메일을 보내면 신청이 끝납니다.</h1>
+    <p class="sub">1 → 2 → 3 순서로 복사하여 메일에 붙여넣으십시오.</p>
+    <div class="steps">
+      <button class="cp" data-copy="to"><span class="n">1</span><span class="t"><b>받는 사람</b><span id="pv-to"></span></span><span class="go">복사</span></button>
+      <button class="cp" data-copy="subject"><span class="n">2</span><span class="t"><b>제목</b><span id="pv-subject"></span></span><span class="go">복사</span></button>
+      <button class="cp" data-copy="body"><span class="n">3</span><span class="t"><b>본문</b><span>내용을 고치지 마십시오</span></span><span class="go">복사</span></button>
+    </div>
+    <div class="after" id="after"></div>
+    <details class="pv"><summary>보낼 내용 확인</summary><div class="preview" id="pv-body"></div></details>
+    <div class="spacer"></div>
+    <button class="next dark" data-go="home">처음으로</button>
+  </section>
+
+  <!-- 멈춤 화면들 -->
+  <section class="screen stop" data-s="stop-cert" hidden>
+    <div class="e">!</div>
+    <h1>경력확인서 대상이 아닙니다.</h1>
+    <p class="sub">한국산업인력공단에는 <b>경력증명서</b>를 제출합니다.</p>
+    <div class="box">인사운영부 이지현(1411)에 문의하십시오.</div>
+    <div class="spacer"></div>
+    <button class="next dark" data-go="home">처음으로</button>
+  </section>
+
+  <section class="screen stop" data-s="stop-recent" hidden>
+    <div class="e">!</div>
+    <h1>신청할 수 없습니다.</h1>
+    <p class="sub">같은 협회는 1년에 1회만 발급합니다.</p>
+    <div class="box">기존 발급본을 사용하십시오.</div>
+    <div class="spacer"></div>
+    <button class="next dark" data-go="home">처음으로</button>
+  </section>
+
+  <section class="screen stop" data-s="stop-due" hidden>
+    <div class="e">!</div>
+    <h1>제출 기한 내 발급이 불가합니다.</h1>
+    <p class="sub" id="due-why"></p>
+    <div class="box">급행 발급은 하지 않습니다.</div>
+    <div class="spacer"></div>
+    <button class="next" data-go="due">날짜 다시 선택</button>
+    <button class="next dark" data-go="home" style="margin-top:10px">처음으로</button>
+  </section>
+
+  <!-- 참여사업명 쓰기 -->
+  <section class="screen" data-s="write" hidden>
+    <h1>참여사업명 검사</h1>
+    <p class="sub">받은 파일의 담당업무를 선택하십시오.<br>작성한 내용을 붙여넣으면 바로 검사합니다.</p>
+    <div class="seg" id="seg"><button class="on" data-kind="m">유지관리</button><button data-kind="w">공사감독</button></div>
+    <label class="field"><b>참여사업명</b><textarea id="w-text" placeholder="한 줄에 하나씩 입력"></textarea></label>
+    <div class="result idle" id="w-result">여기에 검사 결과가 나옵니다</div>
+    <div class="rule">참여사업명 칸만 작성하십시오. <b>다른 칸을 고치면 반려합니다.</b></div>
+    <div class="label" id="ox-title">작성 예시</div>
+    <div class="ox" id="ox"></div>
+    <div class="spacer"></div>
+    <button class="next dark" data-go="home">처음으로</button>
+  </section>
+
+  <div class="toast" id="toast">복사되었습니다</div>
+</div>
+
+<script>
+// ───── 설정 ─────
+const CONFIG = { toCopy: '오종원', toLabel: 'KOBIS 메일 · 인프라기획부 오종원' };
+const ASSOCS = ['한국정보통신공사협회', '한국전기공사협회', '한국엔지니어링협회', '한국기술사회', '한국건설기술인협회', '대한기계설비건설협회', '한국인터넷진흥원(ISMS-P)', '한국산업기술진흥협회'];
+const NG = ['구축', '감독', '설계', '공사', '시공', '감리'];       // 유지관리에 쓰면 반려
+const CHK = ['설치', '이설', '교체'];                             // 유지관리에 있으면 확인
+const VAGUE = ['유지관리', '업무 전반', '전반', '각종', '등 업무'];  // 공사감독 사업명으로 부족
+const EX = {
+  m: { o: ['관악산송신소 TV·FM 송신시설 운영 및 유지관리', '주조정실 방송장비 점검 및 운용', '중계소 송신설비 정기점검 및 장애 복구', '스튜디오 조명·음향 설비 유지관리'],
+       x: [['UHD 송신시설 구축', '구축'], ['송신기 교체공사 감독', '공사, 감독'], ['원격제어 시스템 설계', '설계'], ['디지털 전환 사업 감리', '감리']] },
+  w: { o: ['○○송신소 UHD 송신시설 구축공사 (6.2억)', '노후 FM 송신기 11식 교체공사', '제작편집실 디지털화 공사 (1.1억)'],
+       x: [['방송시설 유지관리', '사업명 아님'], ['송신소 업무 전반', '사업명 아님'], ['각종 시설공사 감독', '사업 불명확'], ['신청 메일에 없던 사업', '추가 불가']] },
+};
+
+// ───── 날짜 (매월 첫째 주 일요일 마감) ─────
+const DAY = 864e5, WD = '일월화수목금토';
+const add = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+function deadlineOf(y, m) { const f = new Date(y, m, 1); return add(f, (3 - f.getDay() + 7) % 7 + 4); }
+function cycleFor(t) {                      // 오늘 신청하면 처리되는 주기
+  let d = deadlineOf(t.getFullYear(), t.getMonth());
+  if (t > d) d = deadlineOf(t.getFullYear(), t.getMonth() + 1);
+  const mon = add(d, -6);
+  return { d, m: d.getMonth() + 1, mon, replyBy: add(mon, 20), issue: [add(mon, 21), add(mon, 27)] };
+}
+const kd = d => `${d.getMonth() + 1}월 ${d.getDate()}일(${WD[d.getDay()]})`;
+const sd = d => `${d.getMonth() + 1}.${d.getDate()}.`;
+const now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+const cyc = cycleFor(today);
+// 지난 마감 기준 몇째 주인지 (2~3주 = 참여사업명 쓰는 기간)
+const prevD = (() => { const d = deadlineOf(today.getFullYear(), today.getMonth()); return today > d ? d : deadlineOf(today.getFullYear(), today.getMonth() - 1); })();
+const weekNo = Math.floor((today - add(prevD, -6)) / DAY / 7) + 1;
+
+// ───── 화면 이동 ─────
+const $ = id => document.getElementById(id);
+const S = {}; document.querySelectorAll('[data-s]').forEach(el => S[el.dataset.s] = el);
+const hist = []; let cur = 'home';
+const v = { assoc: '', status: '', due: '', works: [] };
+function go(name, push = true) {
+  if (name === 'home') { hist.length = 0; }
+  else if (push && cur !== name) hist.push(cur);
+  S[cur].hidden = true; S[name].hidden = false; cur = name;
+  const step = +(S[name].dataset.step || 0);
+  $('bar').hidden = !step; $('bar-i').style.width = (step / 7 * 100) + '%';
+  $('back').hidden = name === 'home'; $('home').hidden = name === 'home'; $('brand').hidden = name !== 'home';
+  if (name === 'done') render();
+  window.scrollTo(0, 0);
+  const f = S[name].querySelector('input:not([type=date]),textarea'); if (f && matchMedia('(pointer:fine)').matches) f.focus();
+}
+$('back').onclick = () => go(hist.pop() || 'home', false);
+$('home').onclick = () => go('home');
+document.addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (b) go(b.dataset.go); });
+
+// 홈
+$('h-date').textContent = kd(cyc.d);
+$('h-when').innerHTML = `지금 신청하면 <b>${cyc.m}월 ${sd(cyc.issue[0])} ~ ${sd(cyc.issue[1])}</b>에<br>PDF로 발급합니다.`;
+if (weekNo === 2 || weekNo === 3) {
+  $('btn-write').classList.add('on'); $('btn-apply').classList.remove('on');
+  $('btn-write').insertAdjacentHTML('beforeend', `<span class="badge">${kd(add(prevD, 14))}까지</span>`);
+}
+
+// 1. 협회
+$('assoc-list').innerHTML = ASSOCS.map(a => `<button class="choice" data-assoc="${a}">${a}</button>`).join('')
+  + `<button class="choice" data-assoc="!cert">한국산업인력공단<small>자격 응시용 경력</small></button>`
+  + `<button class="choice" data-assoc="!etc">기타<small>직접 입력</small></button>`;
+$('assoc-list').addEventListener('click', e => {
+  const b = e.target.closest('[data-assoc]'); if (!b) return;
+  const a = b.dataset.assoc;
+  if (a === '!cert') return go('stop-cert');
+  if (a === '!etc') { $('assoc-etc').hidden = false; $('f-assoc-etc').focus(); return; }
+  v.assoc = a; $('q-assoc-name').textContent = a; go('recent');
+});
+$('f-assoc-etc').oninput = e => $('assoc-etc-next').disabled = e.target.value.trim().length < 2;
+$('assoc-etc-next').onclick = () => { v.assoc = $('f-assoc-etc').value.trim(); $('q-assoc-name').textContent = v.assoc; go('recent'); };
+
+// 3. 이름·사번
+const nameOk = () => $('name-next').disabled = !($('f-name').value.trim().length >= 2 && /^\d{4,8}$/.test($('f-empno').value.trim()));
+$('f-empno').oninput = e => { e.target.value = e.target.value.replace(/\D/g, ''); nameOk(); };
+$('f-name').oninput = nameOk;
+$('name-next').onclick = () => go('status');
+
+// 4. 재직
+document.querySelectorAll('[data-status]').forEach(b => b.onclick = () => { v.status = b.dataset.status; go('purpose'); });
+
+// 5. 용도
+const pOk = () => $('purpose-next').disabled = $('f-purpose').value.trim().length < 2;
+$('f-purpose').oninput = pOk;
+document.querySelectorAll('[data-fill]').forEach(c => c.onclick = () => { $('f-purpose').value = c.dataset.fill; pOk(); });
+$('purpose-next').onclick = () => go('due');
+
+// 6. 제출 기한
+$('f-due').min = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+$('f-due').oninput = () => { v.due = $('f-due').value; $('due-next').disabled = !v.due; };
+$('due-none').onclick = () => { v.due = '없음'; $('f-due').value = ''; checkDue(); };
+$('due-next').onclick = checkDue;
+function checkDue() {
+  if (v.due !== '없음') {
+    const [y, m, d] = v.due.split('-').map(Number), due = new Date(y, m - 1, d);
+    if (due <= cyc.issue[1]) {
+      $('due-why').innerHTML = `지금 신청하면 <b>${cyc.m}월 ${sd(cyc.issue[0])} ~ ${sd(cyc.issue[1])}</b>에 발급합니다.<br>제출 기한 ${kd(due)}보다 늦습니다.`;
+      return go('stop-due');
+    }
+  }
+  go('works');
+}
+
+// 7. 공사감독
+$('works-no').onclick = () => { v.works = []; go('done'); };
+function workRow(i) {
+  return `<div class="work" data-i="${i}">${i ? '<button class="del" data-del>삭제</button>' : ''}<div class="row">
+    <div class="lab">사업 ${i + 1} · 기간</div><input data-k="period" placeholder="2018.03 ~ 2019.06">
+    <div class="lab">사업명</div><input data-k="name" placeholder="○○송신소 UHD 송신시설 구축공사">
+    <div class="lab">KOBIS 문서번호 <span style="font-weight:500">(사업부서 근무 시 생략 가능)</span></div><input data-k="doc" placeholder="예: 송신시설부-1234"></div></div>`;
+}
+let rows = 1; $('work-rows').innerHTML = workRow(0);
+$('work-add').onclick = () => { $('work-rows').insertAdjacentHTML('beforeend', workRow(rows++)); wOk(); };
+$('work-rows').addEventListener('click', e => { if (e.target.closest('[data-del]')) { e.target.closest('.work').remove(); wOk(); } });
+$('work-rows').addEventListener('input', wOk);
+function readWorks() {
+  return [...document.querySelectorAll('#work-rows .work')].map(w => Object.fromEntries([...w.querySelectorAll('input')].map(i => [i.dataset.k, i.value.trim()])));
+}
+function wOk() {
+  const ws = readWorks(), full = ws.filter(w => w.period && w.name);
+  let msg = '';
+  if (ws.some(w => (w.period || w.name || w.doc) && !(w.period && w.name))) msg = '기간과 사업명을 모두 입력하십시오.';
+  else if (full.some(w => VAGUE.some(k => w.name.includes(k)) && !/공사|구축|교체|설치|사업/.test(w.name))) msg = '사업명을 정확히 입력하십시오. “업무 전반”, “유지관리”는 사업명이 아닙니다.';
+  $('work-hint').textContent = msg;
+  $('work-next').disabled = !full.length || !!msg;
+}
+$('work-next').onclick = () => { v.works = readWorks().filter(w => w.period && w.name); go('done'); };
+
+// 완료: 대장 프로그램이 읽는 형식 (줄 머리 바꾸지 말 것)
+const out = {};
+function render() {
+  const name = $('f-name').value.trim(), no = $('f-empno').value.trim();
+  out.to = CONFIG.toCopy;
+  out.subject = `[경력확인서 신청] ${no} ${name} / ${v.assoc}`;
+  out.body = ['[경력확인서 신청]', `성명: ${name}`, `사번: ${no}`, `재직 구분: ${v.status}`, `제출 협회: ${v.assoc}`,
+    `용도: ${$('f-purpose').value.trim()}`, `협회 제출 기한: ${v.due === '없음' ? '없음' : v.due.replaceAll('-', '.') + '.'}`,
+    v.works.length ? '공사감독: 있음' : '공사감독: 없음',
+    ...v.works.map(w => `- ${w.period} / ${w.name}${w.doc ? ' / ' + w.doc : ''}`)].join('\n');
+  $('pv-to').textContent = CONFIG.toLabel; $('pv-subject').textContent = out.subject; $('pv-body').textContent = out.body;
+  $('after').innerHTML = `발송 후 별도 연락은 필요 없습니다.<br><b>${cyc.m}월 둘째 주</b>에 작성본 파일을 보냅니다. <b>${kd(cyc.replyBy)}</b>까지 참여사업명만 작성하여 회신하면 <b>${cyc.m}월 넷째 주</b>에 PDF로 발급합니다.`;
+  document.querySelectorAll('.cp').forEach(c => c.classList.remove('done'));
+}
+document.querySelectorAll('.cp').forEach(b => b.onclick = async () => {
+  const t = out[b.dataset.copy];
+  try { await navigator.clipboard.writeText(t); }
+  catch { const a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); document.execCommand('copy'); a.remove(); }
+  b.classList.add('done'); b.querySelector('.go').textContent = '완료 ✓';
+  toast(['받는 사람', '제목', '본문'][['to', 'subject', 'body'].indexOf(b.dataset.copy)] + ' 복사되었습니다');
+});
+let tt; function toast(m) { const t = $('toast'); t.textContent = m; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 1400); }
+
+// 참여사업명 검사
+let kind = 'm';
+$('seg').onclick = e => { const b = e.target.closest('[data-kind]'); if (!b) return; kind = b.dataset.kind; $('seg').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); check(); ox(); };
+$('w-text').oninput = check;
+const esc = s => s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+function check() {
+  const lines = $('w-text').value.split('\n').map(s => s.trim()).filter(Boolean), r = $('w-result');
+  if (!lines.length) { r.className = 'result idle'; r.textContent = '여기에 검사 결과가 나옵니다'; return; }
+  let bad = 0, warn = 0;
+  const html = lines.map(l => {
+    let h = esc(l);
+    if (kind === 'm') {
+      NG.forEach(k => { if (l.includes(k)) { bad++; h = h.replaceAll(k, `<mark>${k}</mark>`); } });
+      CHK.forEach(k => { if (l.includes(k)) { warn++; h = h.replaceAll(k, `<mark class="w">${k}</mark>`); } });
+    } else if (VAGUE.some(k => l.includes(k)) && !/공사|구축|교체|설치|사업/.test(l)) { bad++; h = `<mark>${h}</mark>`; }
+    return h;
+  }).join('<br>');
+  if (bad) { r.className = 'result ng'; r.innerHTML = (kind === 'm' ? '✕ 빨간 단어를 삭제하십시오' : '✕ 사업명을 정확히 입력하십시오') + `<div class="lines">${html}</div>`; }
+  else if (warn) { r.className = 'result warn'; r.innerHTML = `△ 노란 단어는 유지보수 업무인 경우에만 사용합니다<div class="lines">${html}</div>`; }
+  else { r.className = 'result ok'; r.innerHTML = `✓ 이대로 회신하십시오<div class="lines">${html}</div>`; }
+}
+function ox() {
+  const e = EX[kind];
+  $('ox').innerHTML = e.o.map(t => `<div class="o"><i>O</i><span>${t}</span></div>`).join('')
+    + e.x.map(([t, w]) => `<div class="x"><i>X</i><span><s>${t}</s><em>${w}</em></span></div>`).join('');
+}
+ox();
+</script>
+</body>
+</html>
