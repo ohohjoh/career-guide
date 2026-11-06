@@ -231,15 +231,15 @@ table.ox em{font-style:normal;font-size:12px;font-weight:800;color:var(--red);ma
   <div class="explain"><b>설명</b>전기·건설 관련 협회는 설비가 있는 송신소·중계소 근무만 경력으로 인정합니다. 20일까지 받는 경력 정리표에도 이 기간만 들어갑니다. 송신소·중계소 근무 기간이 없으면 신청해도 발급되지 않습니다.</div>
 </section>
 
-<!-- 2 1년 이내 -->
+<!-- 2 마지막 발급 후 1년 -->
 <section class="screen" data-s="recent" data-step="2" data-name="발급 이력" hidden>
-  <h2 class="q">최근 1년 안에 <span class="v-assoc"></span> 제출용 경력확인서를 발급받았습니까?</h2>
+  <h2 class="q"><span class="v-assoc"></span> 제출용 경력확인서를 마지막으로 발급받은 날로부터 1년이 지났습니까?</h2>
   <p class="q-sub">하나를 선택하십시오.</p>
   <div class="opts" data-pick="recent">
-    <button class="opt" data-v="no"><span class="rd"></span><span class="t">아니요<small>처음 신청하거나, 마지막 발급 후 1년이 지났습니다.</small></span></button>
-    <button class="opt" data-v="yes"><span class="rd"></span><span class="t">예<small>1년 안에 같은 협회 제출용으로 받은 적이 있습니다.</small></span></button>
+    <button class="opt" data-v="no"><span class="rd"></span><span class="t">예, 1년이 지났습니다<small>처음 신청하거나, 마지막 발급일로부터 1년(365일)이 지났습니다.</small></span></button>
+    <button class="opt" data-v="yes"><span class="rd"></span><span class="t">아니요, 1년이 안 됐습니다<small>마지막 발급일로부터 아직 1년이 지나지 않았습니다.</small></span></button>
   </div>
-  <div class="explain"><b>설명</b>같은 협회에 낼 경력확인서는 <strong>1년에 1회</strong>만 발급합니다. 1년 안에 받았다면 그때 받은 경력확인서를 다시 사용하십시오. 담당자도 발급 대장으로 한 번 더 확인합니다.</div>
+  <div class="explain"><b>설명</b>같은 협회 제출용 경력확인서는 <strong>마지막 발급일로부터 1년이 지나야</strong> 다시 발급합니다. 달력 기준(올해 1번)이 아닙니다. 예: 2026년 3월 5일에 받았다면 2027년 3월 5일부터 신청할 수 있습니다. 그 전에는 이미 받은 경력확인서를 사용하십시오. 담당자도 발급 대장으로 다시 확인합니다.</div>
 </section>
 
 <!-- 3 재직 구분 -->
@@ -249,9 +249,9 @@ table.ox em{font-style:normal;font-size:12px;font-weight:800;color:var(--red);ma
   <div class="opts" data-pick="status">
     <button class="opt" data-v="재직"><span class="rd"></span><span class="t">재직<small>현재 KBS에 근무하고 있습니다.</small></span></button>
     <button class="opt" data-v="퇴직"><span class="rd"></span><span class="t">퇴직<small>KBS를 퇴직했고, 지금은 근무하지 않습니다.</small></span></button>
-    <button class="opt" data-v="퇴직 후 재고용"><span class="rd"></span><span class="t">퇴직 후 재고용<small>정년 등으로 퇴직한 뒤 다시 계약하여 근무하고 있습니다.</small></span></button>
+    <button class="opt" data-v="퇴직 후 재고용"><span class="rd"></span><span class="t">퇴직 후 재고용<small>정년 등으로 퇴직한 뒤 다시 계약하여 근무하고 있습니다. (재계약 포함)</small></span></button>
   </div>
-  <div class="explain"><b>설명</b>재직 구분에 따라 직위 표기와 필요한 사번이 달라집니다. 퇴직 후 재고용인 경우 <strong>퇴직 전 사번과 재고용 사번을 모두</strong> 입력해야 경력이 빠지지 않습니다.</div>
+  <div class="explain"><b>설명</b>재직 구분에 따라 직위 표기와 필요한 사번이 달라집니다. 퇴직 후 재고용인 경우 <strong>퇴직 전 사번과, 재고용·재계약 때마다 새로 받은 사번을 모두</strong> 입력해야 경력이 빠지지 않습니다.</div>
 </section>
 
 <!-- 4 성명·사번 -->
@@ -260,7 +260,7 @@ table.ox em{font-style:normal;font-size:12px;font-weight:800;color:var(--red);ma
   <p class="q-sub" id="name-sub"></p>
   <label class="f"><b>성명 <em>*</em></b><input id="f-name" autocomplete="name" placeholder="홍길동"></label>
   <label class="f"><b id="lb-empno">사번 <em>*</em></b><input id="f-empno" inputmode="numeric" maxlength="8" placeholder="숫자만 입력"></label>
-  <label class="f" id="wrap-rehire" hidden><b>재고용 사번 <em>*</em></b><input id="f-rehire" inputmode="numeric" maxlength="8" placeholder="숫자만 입력"><small>재고용 계약 후 새로 받은 사번입니다.</small></label>
+  <label class="f" id="wrap-rehire" hidden><b>재고용 이후 사번 <em>*</em></b><input id="f-rehire" inputmode="numeric" placeholder="예: 98765, 87654"><small>재고용·재계약으로 사번을 새로 받을 때마다 모두 적습니다. 여러 개면 쉼표로 구분합니다.</small></label>
   <div class="explain"><b>설명</b>사번은 숫자만 입력합니다. 인사운영부에 경력 기록을 요청할 때 이 사번을 그대로 사용하므로 정확히 입력하십시오.</div>
 </section>
 
@@ -333,7 +333,7 @@ table.ox em{font-style:normal;font-size:12px;font-weight:800;color:var(--red);ma
   <div class="stopbox"><span class="mk">신청 대상 아님</span><h2>경력확인서 대상이 아닙니다.</h2><p>한국산업인력공단에는 <b>경력증명서</b>를 제출합니다.</p><div class="act">인사운영부 이지현(1411)에 문의하십시오.</div></div>
 </section>
 <section class="screen" data-s="stop-recent" hidden>
-  <div class="stopbox"><span class="mk">신청 불가</span><h2>1년 안에 다시 신청할 수 없습니다.</h2><p>같은 협회 제출용은 1년에 1회만 발급합니다.</p><div class="act">기존에 발급받은 경력확인서를 사용하십시오.</div></div>
+  <div class="stopbox"><span class="mk">신청 불가</span><h2>아직 다시 신청할 수 없습니다.</h2><p>같은 협회 제출용은 <b>마지막 발급일로부터 1년</b>이 지나야 다시 발급합니다.<br>달력 기준(올해 1번)이 아닙니다.</p><div class="act">기존에 발급받은 경력확인서를 사용하십시오.</div></div>
 </section>
 <section class="screen" data-s="stop-due" hidden>
   <div class="stopbox"><span class="mk">신청 불가</span><h2>제출 기한 내 발급이 불가합니다.</h2><p id="due-why"></p><div class="act">급행 발급은 하지 않습니다.</div><button class="redo" data-go="due" id="redo-due">제출 기한 다시 입력</button></div>
@@ -421,7 +421,7 @@ function onPick(k) {
     const r = v.status === '퇴직 후 재고용';
     $('wrap-rehire').hidden = !r;
     $('lb-empno').innerHTML = (v.status === '재직' ? '사번' : '퇴직 전 사번') + ' <em>*</em>';
-    $('name-sub').textContent = r ? '퇴직 전 사번과 재고용 사번을 모두 입력합니다.' : v.status === '퇴직' ? '퇴직 당시 사번을 입력합니다.' : '현재 사번을 입력합니다.';
+    $('name-sub').textContent = r ? '퇴직 전 사번과, 재고용·재계약 때마다 받은 사번을 모두 입력합니다.' : v.status === '퇴직' ? '퇴직 당시 사번을 입력합니다.' : '현재 사번을 입력합니다.';
   }
 }
 
@@ -444,7 +444,7 @@ document.querySelector('[data-pick=assocsel]').addEventListener('click', e => {
 $('f-assoc-etc').oninput = validate;
 
 // 입력
-['f-name', 'f-empno', 'f-rehire', 'f-purpose', 'f-due'].forEach(id => $(id).addEventListener('input', e => { if (id.startsWith('f-emp') || id === 'f-rehire') e.target.value = e.target.value.replace(/\D/g, ''); validate(); }));
+['f-name', 'f-empno', 'f-rehire', 'f-purpose', 'f-due'].forEach(id => $(id).addEventListener('input', e => { if (id.startsWith('f-emp')) e.target.value = e.target.value.replace(/\D/g, ''); if (id === 'f-rehire') e.target.value = e.target.value.replace(/[^\d, ]/g, ''); validate(); }));
 $('elec-ok').onchange = validate;
 document.querySelectorAll('[data-fill]').forEach(c => c.onclick = () => { $('f-purpose').value = c.dataset.fill; validate(); });
 $('f-due').min = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
@@ -469,7 +469,7 @@ function validate() {
     case 'elec': ok = $('elec-ok').checked; break;
     case 'recent': ok = !!v.recent; break;
     case 'status': ok = !!v.status; break;
-    case 'name': ok = $('f-name').value.trim().length > 1 && /^\d{4,8}$/.test($('f-empno').value) && (v.status !== '퇴직 후 재고용' || /^\d{4,8}$/.test($('f-rehire').value)); break;
+    case 'name': ok = $('f-name').value.trim().length > 1 && /^\d{4,8}$/.test($('f-empno').value) && (v.status !== '퇴직 후 재고용' || /^\s*\d{4,8}(\s*[, ]\s*\d{4,8})*\s*$/.test($('f-rehire').value)); break;
     case 'purpose': ok = $('f-purpose').value.trim().length > 1; break;
     case 'due': ok = v.duekind === 'none' || (v.duekind === 'date' && !!$('f-due').value); break;
     case 'works':
@@ -510,7 +510,7 @@ $('next').onclick = () => {
 // 완료: 대장 프로그램이 읽는 형식 (줄 머리 바꾸지 말 것)
 const out = {};
 function render() {
-  const nm = $('f-name').value.trim(), no = $('f-empno').value, re = $('f-rehire').value;
+  const nm = $('f-name').value.trim(), no = $('f-empno').value, re = ($('f-rehire').value.match(/\d{4,8}/g) || []).join(', ');
   const ws = v.works === 'yes' ? works().filter(w => w.period && w.name) : [];
   out.to = MAIL;
   out.subject = `[경력확인서 신청] ${no} ${nm} / ${v.assoc}`;
