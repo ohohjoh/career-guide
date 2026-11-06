@@ -224,11 +224,11 @@ table.ox em{font-style:normal;font-size:12px;font-weight:800;color:var(--red);ma
 
 <!-- 1-1 전기 확인 -->
 <section class="screen" data-s="elec" data-step="1" data-name="제출 협회" hidden>
-  <h2 class="q">전기 협회 제출 시 확인 사항</h2>
+  <h2 class="q">송신소·중계소 근무만 인정하는 협회입니다</h2>
   <p class="q-sub"><b id="elec-name"></b>에는 인정되는 경력이 다릅니다.</p>
   <div class="warnbox"><h3>송신소·중계소 근무 기간만 인정합니다.</h3><p>본사·지역국·제작 부서 근무 기간은 경력 정리표에서 빠집니다.</p></div>
   <label class="check"><input type="checkbox" id="elec-ok">위 내용을 확인했습니다.</label>
-  <div class="explain"><b>설명</b>전기 경력은 전기 설비가 있는 송신소·중계소 근무만 인정됩니다. 20일까지 받는 경력 정리표에도 이 기간만 들어갑니다. 송신소·중계소 근무 기간이 없으면 신청해도 발급되지 않습니다.</div>
+  <div class="explain"><b>설명</b>전기·건설 관련 협회는 설비가 있는 송신소·중계소 근무만 경력으로 인정합니다. 20일까지 받는 경력 정리표에도 이 기간만 들어갑니다. 송신소·중계소 근무 기간이 없으면 신청해도 발급되지 않습니다.</div>
 </section>
 
 <!-- 2 1년 이내 -->
@@ -353,8 +353,8 @@ table.ox em{font-style:normal;font-size:12px;font-weight:800;color:var(--red);ma
 const MAIL = 'ooo@kbs.co.kr';
 const ASSOC = {
   base: ['한국정보통신공사협회'],
-  elec: ['한국전기공사협회', '한국전기기술인협회'],
-  etc: ['한국기술사회', '한국엔지니어링협회', '한국건설기술인협회', '대한기계설비건설협회', '한국인터넷진흥원(ISMS-P)', '한국산업기술진흥협회'],
+  elec: ['한국전기공사협회', '한국전기기술인협회', '한국건설기술인협회'],
+  etc: ['한국기술사회', '한국엔지니어링협회', '대한기계설비건설협회', '한국인터넷진흥원(ISMS-P)', '한국산업기술진흥협회'],
 };
 const VAGUE = ['유지관리', '업무 전반', '전반', '각종', '등 업무'];
 
@@ -429,7 +429,7 @@ function onPick(k) {
 const opt = (val, t, s = '', cls = '') => `<button class="opt ${cls}" data-v="${val}"><span class="rd"></span><span class="t">${t}${s ? `<small>${s}</small>` : ''}</span></button>`;
 $('assoc-opts').innerHTML = `<div class="opts" data-pick="assocsel">
   <div class="group">기본</div>${opt('base|한국정보통신공사협회', '한국정보통신공사협회', 'KBS 신청자 대부분이 해당합니다.')}
-  <div class="group">전기 <em>· 송신소·중계소 근무만 인정</em></div>${ASSOC.elec.map(a => opt('elec|' + a, a)).join('')}
+  <div class="group">전기·건설 <em>· 송신소·중계소 근무만 인정</em></div>${ASSOC.elec.map(a => opt('elec|' + a, a)).join('')}
   <div class="group">그 밖의 협회</div>${ASSOC.etc.map(a => opt('etc|' + a, a)).join('')}${opt('etc|!', '기타', '목록에 없는 협회 (직접 입력)')}
   <div class="group">해당 없음</div>${opt('stop|!', '한국산업인력공단', '자격 응시용 경력 → 경력증명서 대상', 'stop')}
 </div>`;
