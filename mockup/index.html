@@ -168,7 +168,7 @@ table.ox em{font-style:normal;font-size:12px;font-weight:800;color:var(--red);ma
   ol.arrow li:not(:last-child):after{right:auto;left:50%;top:auto;bottom:-14px;transform:translateX(-50%);border:12px solid transparent;border-top:12px solid var(--navy);border-bottom:0}
   .head h1{font-size:20px}.q{font-size:22px}
   .flow{grid-template-columns:1fr 1fr}.flow div:nth-child(2){border-right:0}.flow div:nth-child(-n+2){border-bottom:1px solid var(--line2)}
-  table.kv th{width:88px}.due-big{font-size:22px}.state{vertical-align:3px}
+  table.kv th{width:88px}.due-big{font-size:22px;display:block}.state{margin-bottom:6px}
   .copy-t th{width:auto;display:block;border-bottom:0;padding-bottom:4px;background:none}.copy-t tr{display:grid;grid-template-columns:1fr auto;border-bottom:1px solid var(--line2)}.copy-t th{grid-column:1/-1}.copy-t td{border:0}
   .dock>div{grid-template-columns:90px 1fr}
 }
@@ -190,29 +190,27 @@ table.ox em{font-style:normal;font-size:12px;font-weight:800;color:var(--red);ma
     <table class="kv">
       <tr><th>접수 상태</th><td><span class="state" id="h-state"></span><span class="due-big" id="h-due"></span></td></tr>
       <tr><th>접수 기간</th><td><b>매월 1일 ~ 10일</b><br><span class="small-red">기간 외에 보낸 신청은 처리하지 않으며 회신하지 않습니다.</span></td></tr>
-      <tr><th>일괄 발급</th><td id="h-issue"></td></tr>
+      <tr><th>일괄 발급</th><td><b>매월 말일까지</b></td></tr>
       <tr><th>접수 방법</th><td>KBS 웹메일만 접수 (KOBIS 메일 불가)</td></tr>
     </table>
-    <p class="lead" id="h-lead"></p>
-  </div>
-
-  <div class="menu">
-    <button class="primary" data-go="assoc" id="m-apply"><span class="tx">신청 메일 작성<small id="m-apply-sub">질문에 답하면 신청 메일이 자동으로 작성됩니다</small></span><span class="ar" id="m-apply-ar">시작 ›</span></button>
   </div>
 
   <div class="panel">
     <p class="panel-title">처리 절차 (매월 1회)</p>
     <ol class="arrow" id="flow"></ol>
-    </div>
   </div>
 
   <div class="panel">
     <p class="panel-title">문의</p>
     <div class="contact"><b>경력확인서</b> 인프라기획부 오종원 · 웹메일 <span class="mail-addr"></span><br><b>경력증명서</b> 인사운영부 이지현 (1411)</div>
+    <div class="links" style="margin-top:14px">
+      <a href="./wiki.html">일정 · 인정 기준 · 자주 묻는 질문</a>
+      <a href="./mail.html">경력 정리표 메일 예시</a>
+    </div>
   </div>
-  <div class="links">
-    <a href="../">일정·인정 기준·자주 묻는 질문</a>
-    <a href="./mail.html" class="review">[검토용] 경력 정리표 메일 예시</a>
+
+  <div class="menu">
+    <button class="primary" data-go="assoc" id="m-apply"><span class="tx">신청 메일 작성<small id="m-apply-sub">질문에 답하면 신청 메일이 자동으로 작성됩니다</small></span><span class="ar" id="m-apply-ar">시작 ›</span></button>
   </div>
 </section>
 
@@ -383,13 +381,9 @@ document.querySelectorAll('.mail-addr').forEach(e => e.textContent = MAIL);
 if (OPEN) {
   $('h-state').textContent = '접수중'; $('h-state').className = 'state on';
   $('h-due').textContent = `${kd(C.close)}까지`;
-  $('h-issue').innerHTML = `<b>${kd(C.issue)}까지</b>`;
-  $('h-lead').innerHTML = `지금 신청하면 <b>${C.m}월 ${C.issue.getDate()}일까지</b> 경력확인서를 일괄 발급합니다.`;
 } else {
   $('h-state').textContent = '접수 기간 아님'; $('h-state').className = 'state off';
   $('h-due').textContent = `다음 접수 ${N.m}월 1일 ~ 10일`; $('h-due').classList.add('off');
-  $('h-issue').innerHTML = `다음 발급: <b>${kd(N.issue)}까지</b>`;
-  $('h-lead').innerHTML = `지금은 접수 기간이 아닙니다. <b>${N.m}월 1일</b>부터 신청하십시오.`;
   $('m-apply').disabled = true; $('m-apply').classList.add('closed');
   $('m-apply-sub').textContent = `${N.m}월 1일 0시에 열립니다.`; $('m-apply-ar').textContent = '잠김';
 }

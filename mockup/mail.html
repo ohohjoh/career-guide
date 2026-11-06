@@ -21,14 +21,16 @@ body{margin:0;background:var(--page);color:var(--ink);font-family:"Pretendard Va
 .att{display:inline-flex;align-items:center;gap:6px;margin-top:10px;border:1px solid var(--line);border-radius:3px;padding:6px 10px;font-size:13px;font-weight:700;color:var(--ink2);background:#f6f7f9}
 .mb{padding:22px 20px 28px;font-size:15px}
 .mb p{margin:0 0 12px}
-.caution{border:3px solid var(--red);background:var(--red-bg);padding:18px 20px;margin:0 0 22px}
-.caution h2{margin:0 0 12px;font-size:20px;color:var(--red);letter-spacing:-.03em}
+.caution{border:1px solid #c9d3e8;border-left:5px solid var(--navy);background:#f5f7fc;padding:18px 20px;margin:0 0 22px}
+.caution h2{margin:0 0 6px;font-size:18px;color:var(--navy);letter-spacing:-.03em}
+.caution .c-lead{margin:0 0 12px;font-size:15px;color:var(--ink)}
+.caution .c-lead b{color:var(--red)}
 .caution ol{margin:0;padding-left:22px}
 .caution li{margin:0 0 10px;font-size:15px;line-height:1.6}
 .caution li:last-child{margin-bottom:0}
-.caution li b{display:block;font-size:16px;color:var(--ink)}
+.caution li b{display:block;font-size:15px;color:var(--ink)}
 .caution li span{color:var(--ink2)}
-.caution .red{color:var(--red);font-weight:800}
+.caution li b span{color:var(--ink)}
 h3{font-size:16px;margin:24px 0 8px;display:flex;align-items:center;gap:8px;color:var(--navy)}
 h3:before{content:"";width:4px;height:15px;background:var(--navy)}
 table.t{width:100%;border-collapse:collapse;border-top:2px solid var(--ink);font-size:14px}
@@ -52,7 +54,7 @@ ul.plain li{margin:4px 0}
 </style>
 </head>
 <body>
-<div class="note">[검토용 예시] 매월 20일까지 신청자에게 보내는 메일 모습입니다. 이름·사번·경력은 가상입니다.<a href="./">← 신청 화면</a></div>
+<div class="note">[예시] 매월 20일까지 신청자에게 보내는 메일입니다. 이름·사번·경력은 가상입니다.<a href="./">← 신청 화면</a></div>
 <div class="wrap"><div class="mail">
   <div class="mh">
     <h1 id="subj"></h1>
@@ -64,14 +66,15 @@ ul.plain li{margin:4px 0}
   </div>
   <div class="mb">
     <div class="caution">
-      <h2>[반드시 지키십시오. 어기면 반려합니다.]</h2>
+      <h2>초안 작성 시 유의사항</h2>
+      <p class="c-lead">아래 사항을 지키지 않은 초안은 <b>반려됩니다.</b> 반려된 초안의 수정본은 한 번만 받습니다.</p>
       <ol>
-        <li><b>근무기간·부서·직위·담당업무는 아래 표를 그대로 옮겨 쓰십시오.</b><span>직위를 바꾸거나("차장급" → "부장"), 기간을 합치거나 나누면 <span class="red">반려</span>합니다. 날짜 표기 방식만 협회 양식에 맞춰 바꿀 수 있습니다. (예: 2012.03.01. → 2012-03-01)</span></li>
-        <li><b>표에 없는 기간은 추가하지 마십시오.</b><span>빠진 기간(입사 연수, 휴직, 인정하지 않는 부서)은 일부러 뺀 것입니다.</span></li>
-        <li><b>직접 쓰는 칸은 참여사업명(업무내역) 하나뿐입니다.</b><span>유지관리: 실제로 한 일을 씁니다. <span class="red">구축·감독·설계·공사·시공·감리는 쓰지 않습니다.</span><br>공사감독: 신청 메일에 적은 사업만 씁니다.</span></li>
-        <li><b>파일은 HWPX 또는 DOCX로 보내십시오.</b><span>HWP·PDF·사진은 <span class="red">반려</span>합니다.</span></li>
-        <li><b>회신 기한: <span class="red" id="reply-by"></span></b><span>기한 뒤에 도착하면 다음 달에 처리합니다. 반려 후 수정은 한 번만 받습니다.</span></li>
-        <li><b>협회 양식은 본인이 협회 홈페이지에서 받으십시오.</b><span>직인 칸과 확인자 칸은 비워 두십시오.</span></li>
+        <li><b>근무기간·부서·직위·담당업무는 아래 표를 그대로 옮겨 씁니다.</b><span>직위를 바꾸거나(예: "차장급" → "부장"), 기간을 합치거나 나누지 마십시오. 날짜 표기 방식만 협회 양식에 맞춰 바꿀 수 있습니다. (예: 2012.03.01. → 2012-03-01)</span></li>
+        <li><b>표에 없는 기간은 추가하지 않습니다.</b><span>빠진 기간(입사 연수, 휴직, 인정하지 않는 부서)은 기준에 따라 제외한 것입니다.</span></li>
+        <li><b>직접 작성하는 칸은 참여사업명(업무내역)뿐입니다.</b><span>유지관리: 실제로 한 일을 씁니다. 구축·감독·설계·공사·시공·감리는 쓰지 않습니다.<br>공사감독: 신청 메일에 적은 사업만 씁니다.</span></li>
+        <li><b>파일은 HWPX 또는 DOCX로 보냅니다.</b><span>HWP·PDF·사진 파일은 받지 않습니다.</span></li>
+        <li><b>회신 기한은 <span id="reply-by"></span>입니다.</b><span>기한 뒤에 도착한 초안은 다음 달에 처리합니다.</span></li>
+        <li><b>협회 양식은 본인이 협회 홈페이지에서 받습니다.</b><span>직인 칸과 확인자 칸은 비워 둡니다.</span></li>
       </ol>
     </div>
 
@@ -102,10 +105,10 @@ ul.plain li{margin:4px 0}
     <h3>참여사업명 작성 예시</h3>
     <table class="t">
       <thead><tr><th>담당업무</th><th>이렇게 씁니다</th><th>이렇게 쓰면 반려</th></tr></thead>
-      <tr><td class="nw">유지관리</td><td>○○송신소 TV·FM 송신시설 운영 및 유지관리<br>주조정실 방송장비 점검 및 운용</td><td>UHD 송신시설 <b>구축</b><br>송신기 교체<b>공사 감독</b></td></tr>
+      <tr><td class="nw">유지관리</td><td>○○송신소 TV·FM 송신시설 운영 및 유지관리<br>주조정실 방송장비 점검 및 운용</td><td>UHD 송신시설 구축<br>송신기 교체공사 감독</td></tr>
       <tr><td class="nw">공사감독</td><td>○○송신소 UHD 송신시설 구축공사 (6.2억)</td><td>방송시설 유지관리<br>신청 메일에 없던 사업</td></tr>
     </table>
-    <p class="legend">유지관리 칸에 <b>구축·감독·설계·공사·시공·감리</b>가 한 글자라도 들어가면 반려합니다. "설치·이설·교체"는 유지보수 업무일 때만 씁니다.</p>
+    <p class="legend">유지관리 칸에 구축·감독·설계·공사·시공·감리가 들어가면 반려됩니다. "설치·이설·교체"는 유지보수 업무일 때만 씁니다.</p>
 
     <h3>회신 방법</h3>
     <ul class="plain">
